@@ -1,10 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
-    const Movie = sequelize.define("Movie", {
-        movie_name: {
+    const User = sequelize.define("User", {
+        user_name: {
             type: DataTypes.STRING,
             allowNull: false
         }
     });
-    return Movie;
+    return User;
   };
   
