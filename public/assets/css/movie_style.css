@@ -10,6 +10,10 @@
     color: white;
 }
 
+input {
+    margin-left: 20px;
+}
+
 .img-responsive {
     float: left;
     padding-right: 20px;
@@ -27,3 +31,13 @@ margin-bottom: 20px;
     border-top: double black;
     text-align: center;
 }
+
+/* review page*/
+.header {
+    background-image: url("../img/header.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: white;
+}
+
