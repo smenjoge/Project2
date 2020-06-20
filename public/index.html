@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Movie GOAT</title>
+    <!-- Google font -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap style -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="assets/css/movie_style.css">
+
+</head>
+
+<body>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <strong>
+                <h1 class="display-4">Movie GOAT</h1>
+            </strong>
+            <p class="lead"></p>
+            <div class="form-group form-inline">
+                <label for="search">Search Movie:</label>
+                <input type="text" class="form-control" id="search-term" placeholder="Lord of the Rings">
+                <button type="submit" class="btn submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container movies">
+        <div class="row">
+            <div class="col-md">
+                <img src="assets/img/lotr.jpg" alt="Lord of the Rings poster" class="img-responsive">
+               
+                <p>Movie Name: <span id="name"></span></p>
+                <p>Year: <span id="year"></span></p>
+                <p>Rating: <span id="rating"></span></p>
+                <p>Actors: <span id="actors"></span></p>
+                <p>Description: <span id="desc"></span></p>
+
+                <button type="button" class="btn btn-dark addReview">Add Review</button>
+                <button type="button" class="btn btn-secondary viewReviews">View Reviews</button>
+            </div>
+        </div>
+        <div>
+            <h2 class="searchHistory">Search History</h2>
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-5" class="historyMovies">
+            <div class="col sm-3">
+                <div class="card">
+                    <img src="assets/img/lotr.jpg" class="card-img-top" id="image1">
+                    <div class="card-body">
+                        <h5 class="card-title title1">Lord of the Rings</h5>
+                        <p class="card-text"><a href="">View top review</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col sm-3">
+                <div class="card">
+                    <img src="assets/img/lotr.jpg" class="card-img-top" id="image2">
+                    <div class="card-body">
+                        <h5 class="card-title title2">Lord of the Rings</h5>
+                        <p class="card-text"><a href="">View top review</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col sm-3">
+                <div class="card">
+                    <img src="assets/img/lotr.jpg" class="card-img-top" id="image3">
+                    <div class="card-body">
+                        <h5 class="card-title title3">Lord of the Rings</h5>
+                        <p class="card-text"><a href="">View top review</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col sm-3">
+                <div class="card">
+                    <img src="assets/img/lotr.jpg" class="card-img-top" id="image4">
+                    <div class="card-body">
+                        <h5 class="card-title title4">Lord of the Rings</h5>
+                        <p class="card-text"><a href="">View top review</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="footer">
+        <p> &#169; 2020 Copyright Laureni Wilkinson-S&aacute;nchez, Delinger Rodriguez, Daniel Fellner, Sandesh
+            Menjoge
+        </p>
+    </div>
+
+
+</body>
+
+</html>
