@@ -25,6 +25,6 @@ module.exports = function(app) {
     
     const response = await axios.get('http://www.omdbapi.com', qs);
     // console.log(response.data);
-    res.json(response.data);
+    res.json(response.data.Search);
   });
 };
