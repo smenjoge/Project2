@@ -27,4 +27,11 @@ module.exports = function(app) {
     // console.log(response.data);
     res.json(response.data.Search);
   });
+
+  app.post("/api/reviews", async function(req, res) {
+    console.log(req.body);
+    await db.Review.create(req.body)
+      
+    res.json(res);
+  });
 };
