@@ -10,7 +10,7 @@
     color: white;
 }
 
-input {
+#search-term {
     margin-left: 20px;
 }
 
@@ -40,4 +40,6 @@ margin-bottom: 20px;
     background-size: cover;
     color: white;
 }
+
+
 

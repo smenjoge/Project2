@@ -18,5 +18,26 @@ $(document).ready(function() {
     });
    
 
+    // When user clicks add-btn
+    $("#addReview").on("click", function(event) {
+        event.preventDefault();
+  
+    // Make a newReview object
+    var newReview = {
+        review_title: $("#reviewTitle").val().trim(),
+        review_text: $("#reviewText").val().trim()
+    };
+  
+    // Send an AJAX POST-request with jQuery
+    $.post("/api/reviews", newReview)
+        // On success, run the following code
+        .then(function(data) {
+            // Log the data we found
+            console.log(data);
+
+        });
+        $("#reviewTitle").val("");
+        $("#reviewText").val("");
+    });   
 
 });

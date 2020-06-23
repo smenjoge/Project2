@@ -13,19 +13,19 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
             len: [1]
             }
-        },
-        review_rating: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        movie_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        }
+        }//,
+        // review_rating: {
+        //     type: DataTypes.INTEGER,
+        //     defaultValue: 0
+        // },
+        // user_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false
+        // },
+        // movie_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false
+        // }
     });
     return Review;
   };

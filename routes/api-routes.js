@@ -25,6 +25,13 @@ module.exports = function(app) {
     
     const response = await axios.get('http://www.omdbapi.com', qs);
     // console.log(response.data);
-    res.json(response.data);
+    res.json(response.data.Search);
+  });
+
+  app.post("/api/reviews", async function(req, res) {
+    console.log(req.body);
+    await db.Review.create(req.body)
+      
+    res.json(res);
   });
 };

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Movie GOAT</title>
+
     <!-- Google font -->
 
     <!-- Font Awesome -->
@@ -14,8 +15,14 @@
     <!-- Bootstrap style -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="assets/css/movie_style.css">
 
 </head>
@@ -28,19 +35,20 @@
                 <h1 class="display-4">Movie GOAT</h1>
             </strong>
             <p class="lead"></p>
-            <div class="form-group form-inline">
+
+            <form class="form-group form-inline searchMovie">
                 <label for="search">Search Movie:</label>
-                <input type="text" class="form-control" id="search-term" placeholder="Lord of the Rings">
+                <input type="text" class="form-control" id="search-term" placeholder="Enter Movie/Series Name">
                 <button type="submit" class="btn submit"><i class="fa fa-search"></i></button>
-            </div>
+            </form>
         </div>
     </div>
 
-    <!-- Current Movie -->
     <div class="container movies">
         <div class="row">
             <div class="col-md">
-                <img src="" alt="movie poster" class="img-responsive" id="moviePoster">
+                <img id="poster" class="img-responsive">
+
                
                 <p>Movie Name: <span id="name"></span></p>
                 <p>Year: <span id="year"></span></p>
@@ -48,17 +56,59 @@
                 <p>Actors: <span id="actors"></span></p>
                 <p>Description: <span id="desc"></span></p>
 
-                <button type="button" class="btn btn-dark addReview"><a href="review.html">Add Review</a></button>
+                <button type="button" class="btn btn-dark addReview" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Review</button>
                 <button type="button" class="btn btn-secondary viewReviews">View Reviews</button>
             </div>
         </div>
 
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add Review</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Title:</label>
+                      <input type="text" class="form-control" id="reviewTitle">
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Review:</label>
+                      <textarea class="form-control" id="reviewText"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-dark" id="addReview" data-dismiss="modal">Post Review</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        <!-- <div>
+            <h2 class="searchHistory">Search History</h2>
+        </div> -->
+
+        <!-- <div class="row row-cols-1 row-cols-sm-5" class="historyMovies">
+
+                <button type="button" class="btn btn-dark addReview"><a href="review.html">Add Review</a></button>
+                <button type="button" class="btn btn-secondary viewReviews">View Reviews</button>
+            </div>
+        </div>-->
+
 
         <!-- Search History -->
+
         <div>
             <h2 class="searchHistory">Search History</h2>
         </div>
         <div class="row row-cols-1 row-cols-sm-5" class="historyMovies">
+
             <div class="col sm-3">
                 <div class="card">
                     <img src="assets/img/lotr.jpg" class="card-img-top" id="image1">
@@ -95,7 +145,11 @@
                     </div>
                 </div>
             </div>
+
+        </div> 
+
         </div>
+
 
     </div>
 
@@ -106,6 +160,8 @@
             Menjoge
         </p>
     </div>
+
+    <script src="./assets/js/movies.js" type="text/javascript"></script>
 
 
 </body>
