@@ -16,22 +16,24 @@ module.exports = function(app) {
 
   // GET route for getting all of the todos
   app.get("/api/movie/:name", async function(req, res) {
+    console.log(`Movie Name `, req.params.name);
     let qs = {
         params: {
-          s: req.params.name,
+          t: req.params.name,
           apikey: '9f2b2ef1'
         }
     };
     
     const response = await axios.get('http://www.omdbapi.com', qs);
-    // console.log(response.data);
-    res.json(response.data.Search);
+    const {Title, Poster, imdbID} = response.data;
+    const movieInsert = await db.Movie.create({Title, Poster, imdbID});
+    res.json(response.data);
   });
 
   app.post("/api/reviews", async function(req, res) {
-    console.log(req.body);
-    await db.Review.create(req.body)
-      
-    res.json(res);
+    const {review_title, review_text, movieImdbID} = req.body;
+    const results = await db.Review.create({review_title, review_text, movieImdbID});
+    console.log(`Post review: `, results);
+    res.end();
   });
 };

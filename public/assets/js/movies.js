@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    let movieImdbID;
 
     $(document).on("submit", ".searchMovie", function(event) {
         // Make sure to preventDefault on a submit event.
@@ -7,22 +7,27 @@ $(document).ready(function() {
     
         let movieSearch = $("#search-term").val().trim();
 
-        $.get("/api/movie/" + movieSearch, function(data) {
-            movieDetails = data[0];
+        $.get("/api/movie/" + movieSearch, function(movieDetails) {
             $("#name").text(movieDetails.Title);
             $("#year").text(movieDetails.Year);
+            $("#genre").text(movieDetails.Genre);
+            $("#actors").text(movieDetails.Actors);
+            $("#plot").text(movieDetails.Plot);
             $("#poster").attr({src: movieDetails.Poster, alt: movieDetails.Title} );
+            movieImdbID = movieDetails.imdbID;
         });
     
        
     });
    
+
     // When user clicks add-btn
     $("#addReview").on("click", function(event) {
         event.preventDefault();
   
     // Make a newReview object
     var newReview = {
+        movieImdbID: movieImdbID,
         review_title: $("#reviewTitle").val().trim(),
         review_text: $("#reviewText").val().trim()
     };
