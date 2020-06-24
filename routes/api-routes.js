@@ -20,7 +20,7 @@ module.exports = function(app) {
     let qs = {
         params: {
           t: req.params.name,
-          apikey: '9f2b2ef1'
+          apikey: process.env.API_KEY
         }
     };
     
