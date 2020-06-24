@@ -15,10 +15,16 @@
     <!-- Bootstrap style -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
 
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -44,66 +50,330 @@
         </div>
     </div>
 
-    <div class="container movies">
+    <div class="container">
+        <center>
+            <h2>Recommended Movies</h2>
+        </center>
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-12 mb-4">
+
+                <!--Modal: Name-->
+                <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+
+                        <!--Content-->
+                        <div class="modal-content">
+                            <!--Body-->
+                            <div class="modal-body mb-0 p-0">
+                                <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/r5X-hFf6Bwo"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
+                                data-dismiss="modal" data-target="#exampleModal" data-whatever="@mdo">Add Review</button>
+                                <button type="button" class="btn btn-outline-primary viewReviews">View Reviews</button>
+                                <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
+                                    data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        <!--/.Content-->
+
+                    </div>
+                </div>
+                <!--Modal: Name-->
+                <a><img class="img-fluid z-depth-1" src="assets/img/lotr.jpg" alt="video" data-toggle="modal"
+                        data-target="#modal1"></a>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-6 mb-4">
+
+                <!--Modal: Name-->
+                <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <!--Content-->
+                        <div class="modal-content">
+                            <!--Body-->
+                            <div class="modal-body mb-0 p-0">
+                                <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/m8e-FF8MsqU"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal" data-target="#exampleModal"
+                    data-whatever="@mdo" data-dismiss="modal">Add Review</button>
+                                <button type="button" class="btn btn-outline-primary viewReviews">View Reviews</button>
+                                <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
+                                    data-dismiss="modal">Close</button>
+                            </div>
+
+   
+
+                        </div>
+                        <!--/.Content-->
+                    </div>
+                </div>
+                <!--Modal: Name-->
+
+                <a><img class="img-fluid z-depth-1" src="assets/img/matrix.jpg" alt="video" data-toggle="modal"
+                        data-target="#modal2"></a>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-6 mb-4">
+
+                <!--Modal: Name-->
+                <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+
+                        <!--Content-->
+                        <div class="modal-content">
+
+                            <!--Body-->
+                            <div class="modal-body mb-0 p-0">
+
+                                <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/EXeTwQWrcwY"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
+                                    data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add Review</button>
+                                <button type="button" class="btn btn-outline-primary viewReviews">View Reviews</button>
+                                <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
+                                    data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                        <!--/.Content-->
+
+                    </div>
+                </div>
+                <!--Modal: Name-->
+
+                <a><img class="img-fluid z-depth-1" src="assets/img/dark_knight.jpg" alt="video" data-toggle="modal"
+                        data-target="#modal3"></a>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-12 mb-4">
+
+                <!--Modal: Name-->
+                <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+
+                        <!--Content-->
+                        <div class="modal-content">
+
+                            <!--Body-->
+                            <div class="modal-body mb-0 p-0">
+
+                                <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qtRKdVHc-cE"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe> </div>
+
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
+                                data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add Review</button>
+                                <button type="button" class="btn btn-outline-primary viewReviews">View Reviews</button>
+                                <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
+                                    data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                        <!--/.Content-->
+
+                    </div>
+                </div>
+                <!--Modal: Name-->
+
+                <a><img class="img-fluid z-depth-1" src="assets/img/fight.jpg" alt="video" data-toggle="modal"
+                        data-target="#modal4"></a>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-6 mb-4">
+
+                <!--Modal: Name-->
+                <div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+
+                        <!--Content-->
+                        <div class="modal-content">
+
+                            <!--Body-->
+                            <div class="modal-body mb-0 p-0">
+
+                                <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/h3QpxNI-PtE"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
+                                    data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add Review</button>
+                                <button type="button" class="btn btn-outline-primary viewReviews">View Reviews</button>
+                                <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
+                                    data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                        <!--/.Content-->
+
+                    </div>
+                </div>
+                <!--Modal: Name-->
+
+                <a><img class="img-fluid z-depth-1" src="assets/img/goodfellas.jpg" alt="video" data-toggle="modal"
+                        data-target="#modal5"></a>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-6 mb-4">
+
+                <!--Modal: Name-->
+                <div class="modal hide fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+
+                        <!--Content-->
+                        <div class="modal-content">
+
+                            <!--Body-->
+                            <div class="modal-body mb-0 p-0">
+
+                                <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dcUOO4Itgmw"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
+                                    data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add Review</button>
+                                <button type="button" class="btn btn-outline-primary viewReviews">View Reviews</button>
+                                <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
+                                    data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                        <!--/.Content-->
+
+                    </div>
+                </div>
+                <!--Modal: Name-->
+
+                <a><img class="img-fluid z-depth-1" src="assets/img/city.jpg" alt="video" data-toggle="modal"
+                        data-target="#modal6"></a>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+    </div>
+
+         <!--inner modal-->              
+         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Review</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Title:</label>
+                                <input type="text" class="form-control" id="reviewTitle">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Review:</label>
+                                <textarea class="form-control" id="reviewText"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" id="addReview" data-dismiss="modal">Post
+                            Review</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="container movies hide">
         <div class="row">
             <div class="col-md">
                 <img id="poster" class="img-responsive">
 
-               
                 <p>Movie Name: <span id="name"></span></p>
                 <p>Year: <span id="year"></span></p>
                 <p>Rating: <span id="rating"></span></p>
                 <p>Actors: <span id="actors"></span></p>
                 <p>Description: <span id="desc"></span></p>
 
-                <button type="button" class="btn btn-dark addReview" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Review</button>
+                <button type="button" class="btn btn-dark addReview" data-toggle="modal" data-target="#exampleModal"
+                    data-whatever="@mdo">Add Review</button>
                 <button type="button" class="btn btn-secondary viewReviews">View Reviews</button>
             </div>
         </div>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add Review</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Title:</label>
-                      <input type="text" class="form-control" id="reviewTitle">
-                    </div>
-                    <div class="form-group">
-                      <label for="message-text" class="col-form-label">Review:</label>
-                      <textarea class="form-control" id="reviewText"></textarea>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-dark" id="addReview" data-dismiss="modal">Post Review</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-        <!-- <div>
-            <h2 class="searchHistory">Search History</h2>
-        </div> -->
-
-        <!-- <div class="row row-cols-1 row-cols-sm-5" class="historyMovies">
-
-                <button type="button" class="btn btn-dark addReview"><a href="review.html">Add Review</a></button>
-                <button type="button" class="btn btn-secondary viewReviews">View Reviews</button>
-            </div>
-        </div>-->
-
-
         <!-- Search History -->
-
         <div>
             <h2 class="searchHistory">Search History</h2>
         </div>
@@ -111,48 +381,44 @@
 
             <div class="col sm-3">
                 <div class="card">
-                    <img src="assets/img/lotr.jpg" class="card-img-top" id="image1">
+                    <img src="" class="card-img-top" id="image1">
                     <div class="card-body">
-                        <h5 class="card-title title1">Lord of the Rings</h5>
+                        <h5 class="card-title title1"></h5>
                         <p class="card-text"><a href="">View top review</a></p>
                     </div>
                 </div>
             </div>
             <div class="col sm-3">
                 <div class="card">
-                    <img src="assets/img/lotr.jpg" class="card-img-top" id="image2">
+                    <img src="" class="card-img-top" id="image2">
                     <div class="card-body">
-                        <h5 class="card-title title2">Lord of the Rings</h5>
+                        <h5 class="card-title title2"></h5>
                         <p class="card-text"><a href="">View top review</a></p>
                     </div>
                 </div>
             </div>
             <div class="col sm-3">
                 <div class="card">
-                    <img src="assets/img/lotr.jpg" class="card-img-top" id="image3">
+                    <img src="" class="card-img-top" id="image3">
                     <div class="card-body">
-                        <h5 class="card-title title3">Lord of the Rings</h5>
+                        <h5 class="card-title title3"></h5>
                         <p class="card-text"><a href="">View top review</a></p>
                     </div>
                 </div>
             </div>
             <div class="col sm-3">
                 <div class="card">
-                    <img src="assets/img/lotr.jpg" class="card-img-top" id="image4">
+                    <img src="" class="card-img-top" id="image4">
                     <div class="card-body">
-                        <h5 class="card-title title4">Lord of the Rings</h5>
+                        <h5 class="card-title title4"></h5>
                         <p class="card-text"><a href="">View top review</a></p>
                     </div>
                 </div>
             </div>
-
-        </div> 
 
         </div>
 
-
     </div>
-
 
 
     <div class="footer">
