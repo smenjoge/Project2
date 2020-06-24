@@ -10,13 +10,16 @@ $(document).ready(function() {
     $(document).on("submit", ".searchMovie", async function(event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
-    
+        $(".search-results").removeClass("displayNone");
+        $(".recommended").addClass("displayNone");
+        
         let movieSearch = $("#search-term").val().trim();
         await getMovieDetails(movieSearch);
     });
 
     async function getMovieDetails(movieSearch) {
         $.get("/api/movie/" + movieSearch, function(movieDetails) {
+           
             $("#name").text(movieDetails.Title);
             $("#year").text(movieDetails.Year);
             $("#genre").text(movieDetails.Genre);
