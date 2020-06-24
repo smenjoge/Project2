@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
             len: [1]
             }
-        }//,
+        },
         // review_rating: {
         //     type: DataTypes.INTEGER,
         //     defaultValue: 0
@@ -22,10 +22,10 @@ module.exports = function(sequelize, DataTypes) {
         //     type: DataTypes.INTEGER,
         //     allowNull: false
         // },
-        // movie_id: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false
-        // }
+        movieImdbID: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
     });
     return Review;
   };
