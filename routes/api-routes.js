@@ -38,4 +38,17 @@ module.exports = function(app) {
     console.log(`Post review: `, results);
     res.end();
   });
+
+  // DELETE route for deleting todos. We can get the id of the todo to be deleted from
+  // req.params.id
+  app.delete("/api/reviews/:id", async function(req, res) {
+    // We just have to specify which todo we want to destroy with "where"
+    const results = await db.Review.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    res.json(results);
+  });
+
 };
