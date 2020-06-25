@@ -26,7 +26,6 @@ $(document).ready(function () {
 
         let movieSearch = $("#search-term").val().trim();
         await getMovieDetails(movieSearch);
-        
     });
 
     // Function to call GET route on server side, to get movie information from OMDB API
