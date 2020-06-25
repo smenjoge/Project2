@@ -1,33 +1,24 @@
 $(document).ready(function () {
     let movieImdbID;
 
-    // let movieLocalStorage = JSON.parse(localStorage.getItem("movies"));
-    // if (!movieLocalStorage) {
-    //     movieLocalStorage =[];
-    // }
-
-
-    $("#addReview").on("click", function (event) {
-        event.preventDefault();
-        const userReview = {
-            user: $("#userName").val().trim(),
-            title: $("#reviewTitle").val().trim(),
-            text: $("#reviewText").val().trim()
+    // Check local storage for history of recently searched movies. If found,
+    // the movie posters will be displayed in the Search History section on HTML
+    let movieLocalStorage = JSON.parse(localStorage.getItem("movies"));
+    if (!movieLocalStorage) {
+        movieLocalStorage =[];
+    } else {
+        $(".search-history").removeClass("displayNone");
+        for (let i=0; i < movieLocalStorage.length; i++ ) {
+            let newCard = $(".historyCard").clone();
+            newCard.removeClass("displayNone");
+            newCard.removeClass("historyCard");
+            newCard.find(".card-img-top").attr({src: movieLocalStorage[i].poster, alt:  movieLocalStorage[i].name})
+            newCard.find("a").attr("href", "/review" + movieLocalStorage[i].movieImdbID)
+            $(".historyMovies").append(newCard);
         }
-        submitReview(userReview);
-    })
-
-    function submitReview(item) {
-        $.post("/api/reviews/", item)
-            .then(() => {
-                console.log("review sent")
-            }
-            );
     }
-
-
-
-    $(document).on("submit", ".searchMovie", async function (event) {
+    
+    $(document).on("submit", ".searchMovie", async function(event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
         $(".search-results").removeClass("displayNone");
@@ -37,34 +28,48 @@ $(document).ready(function () {
         await getMovieDetails(movieSearch);
     });
 
+    // Function to call GET route on server side, to get movie information from OMDB API
+    // This function also adds the movie details returned from server to the local storage
     async function getMovieDetails(movieSearch) {
-        $.get("/api/movie/" + movieSearch, function (movieDetails) {
-
-            $("#name").text(movieDetails.Title);
-            $("#year").text(movieDetails.Year);
-            $("#genre").text(movieDetails.Genre);
-            $("#actors").text(movieDetails.Actors);
-            $("#plot").text(movieDetails.Plot);
-            $("#poster").attr({ src: movieDetails.Poster, alt: movieDetails.Title });
+        $.get("/api/movie/" + movieSearch, async function(movieDetails) {
+            displayResult(movieDetails);
             movieImdbID = movieDetails.imdbID;
+            let movieFound;
 
-            // let movieObj = {
-            //     name: movieDetails.Title,
-            //     year: movieDetails.Year,
-            //     genre: movieDetails.Genre,
-            //     actors: movieDetails.Actors,
-            //     plot: movieDetails.Plot,
-            //     poster: movieDetails.Poster,
-            //     movieImdbID: movieDetails.imdbID
-            // }
-            // movieLocalStorage.unshift(movieObj);
-            // if (movieLocalStorage.length > 10) { 
-            //     movieLocalStorage.splice(movieLocalStorage.length-1, 1);
-            //   }
-            // localStorage.setItem("movies", JSON.stringify(movieLocalStorage));
+            // If local storage is not empty, use filter function to search if the movie
+            // just searched is already in the local storage. If not, then only it will be added
+            // to the local storage
+            if (movieLocalStorage.length > 0) {
+                movieFound = await movieLocalStorage.filter(movie => movie.movieImdbID === movieImdbID);
+            }; 
+            if (!movieFound) {
+                let movieObj = {
+                    name: movieDetails.Title,
+                    year: movieDetails.Year,
+                    genre: movieDetails.Genre,
+                    actors: movieDetails.Actors,
+                    plot: movieDetails.Plot,
+                    poster: movieDetails.Poster,
+                    movieImdbID: movieDetails.imdbID
+                }
+                movieLocalStorage.unshift(movieObj);
+                if (movieLocalStorage.length > 10) { 
+                    movieLocalStorage.splice(movieLocalStorage.length-1, 1);
+                }
+                localStorage.setItem("movies", JSON.stringify(movieLocalStorage));
+            }
         });
     };
-
+   
+    // Function to display Movie info on html page
+    function displayResult(omdbAPIResp) {
+        $("#name").text(omdbAPIResp.Title);
+        $("#year").text(omdbAPIResp.Year);
+        $("#genre").text(omdbAPIResp.Genre);
+        $("#actors").text(omdbAPIResp.Actors);
+        $("#plot").text(omdbAPIResp.Plot);
+        $("#poster").attr({src: omdbAPIResp.Poster, alt: omdbAPIResp.Title} );
+    };
 
     // When user clicks add-btn
     $("#addReview").on("click", function (event) {
