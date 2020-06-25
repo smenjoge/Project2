@@ -8,3 +8,5 @@ module.exports = function(sequelize, DataTypes) {
     return User;
   };
   
+
+  //need to assoc user to review by using: User.hasMany(Review);
