@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     let movieImdbID;
 
     // Check local storage for history of recently searched movies. If found,
@@ -23,7 +23,7 @@ $(document).ready(function() {
         event.preventDefault();
         $(".search-results").removeClass("displayNone");
         $(".recommended").addClass("displayNone");
-        
+
         let movieSearch = $("#search-term").val().trim();
         await getMovieDetails(movieSearch);
         
@@ -73,26 +73,26 @@ $(document).ready(function() {
     };
 
     // When user clicks add-btn
-    $("#addReview").on("click", function(event) {
+    $("#addReview").on("click", function (event) {
         event.preventDefault();
-  
-    // Make a newReview object
-    var newReview = {
-        movieImdbID: movieImdbID,
-        review_title: $("#reviewTitle").val().trim(),
-        review_text: $("#reviewText").val().trim()
-    };
-  
-    // Send an AJAX POST-request with jQuery
-    $.post("/api/reviews", newReview)
-        // On success, run the following code
-        .then(function(data) {
-            // Log the data we found
-            console.log(data);
 
-        });
+        // Make a newReview object
+        var newReview = {
+            movieImdbID: movieImdbID,
+            review_title: $("#reviewTitle").val().trim(),
+            review_text: $("#reviewText").val().trim()
+        };
+
+        // Send an AJAX POST-request with jQuery
+        $.post("/api/reviews", newReview)
+            // On success, run the following code
+            .then(function (data) {
+                // Log the data we found
+                console.log(data);
+
+            });
         $("#reviewTitle").val("");
         $("#reviewText").val("");
-    });   
+    });
 
 });

@@ -51,9 +51,9 @@
     </div>
 
     <div class="container">
-        <center>
-            <h2>Recommended Movies</h2>
-        </center>
+            <div class="row justify-content-md-center recommended">
+                <h2>Recommended Movies</h2>
+            </div>
         <!-- Grid row -->
         <div class="row recommended">
 
@@ -80,7 +80,8 @@
                             <!--Footer-->
                             <div class="modal-footer justify-content-center">
                                 <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
-                                    data-dismiss="modal" data-target="#exampleModal" data-whatever="@mdo">Add Review</button>
+                                    data-dismiss="modal" data-target="#exampleModal" data-whatever="@mdo">Add
+                                    Review</button>
                                 <a href="review.html"><button type="button"
                                         class="btn btn-outline-primary viewReviews">View Reviews</a></button>
                                 <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
@@ -93,7 +94,7 @@
                 </div>
                 <!--Modal: Name-->
                 <a><img class="img-fluid z-depth-1" src="assets/img/lotr.jpg" alt="video" data-toggle="modal"
-                    data-target="#modal1"></a>
+                        data-target="#modal1"></a>
 
             </div>
             <!-- Grid column -->
@@ -350,6 +351,10 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">User Name:</label>
+                            <input type="text" class="form-control" id="userName">
+                        </div>
+                        <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Title:</label>
                             <input type="text" class="form-control" id="reviewTitle">
                         </div>
@@ -360,8 +365,9 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" id="addReview" data-dismiss="modal">Post
-                        Review</button>
+                    <a href="review.html"><button type="button" class="btn btn-dark" id="addReview"
+                            data-dismiss="modal">Post
+                            Review</a></button>
                 </div>
             </div>
         </div>
