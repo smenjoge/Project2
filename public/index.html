@@ -377,65 +377,37 @@
     </div>
 
     <div class="container search-results displayNone">
-        <div class="row search-results">
-            <div class="col-md search-results">
+        <div class="row">
+            <div class="col-md">
                 <img id="poster" class="img-responsive">
 
                 <p>Movie Name: <span id="name"></span></p>
                 <p>Year: <span id="year"></span></p>
-                <p>Rating: <span id="rating"></span></p>
+                <p>Rating: <span id="genre"></span></p>
                 <p>Actors: <span id="actors"></span></p>
-                <p>Description: <span id="desc"></span></p>
+                <p>Plot: <span id="plot"></span></p>
 
                 <button type="button" class="btn btn-dark addReview" data-toggle="modal" data-target="#exampleModal"
                     data-whatever="@mdo">Add Review</button>
                 <button type="button" class="btn btn-secondary viewReviews">View Reviews</button>
             </div>
         </div>
-
+    </div>
+    
+    <div class="container search-history displayNone">
         <!-- Search History -->
         <div>
-            <h2 class="searchHistory">Search History</h2>
+            <h2 class="searchHistory text-center">Search History</h2>
         </div>
-        <div class="row row-cols-1 row-cols-sm-5" class="historyMovies">
+        <div class="row row-cols-1 row-cols-sm-5 historyMovies">
 
-            <div class="col sm-3">
+            <div class="col sm-3 historyCard displayNone ">
                 <div class="card">
-                    <img src="" class="card-img-top" id="image1">
-                    <div class="card-body">
-                        <h5 class="card-title title1"></h5>
-                        <p class="card-text"><a href="">View top review</a></p>
-                    </div>
+                    <a href="">
+                        <img  class="card-img-top">
+                    </a>
                 </div>
             </div>
-            <div class="col sm-3">
-                <div class="card">
-                    <img src="" class="card-img-top" id="image2">
-                    <div class="card-body">
-                        <h5 class="card-title title2"></h5>
-                        <p class="card-text"><a href="">View top review</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col sm-3">
-                <div class="card">
-                    <img src="" class="card-img-top" id="image3">
-                    <div class="card-body">
-                        <h5 class="card-title title3"></h5>
-                        <p class="card-text"><a href="">View top review</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col sm-3">
-                <div class="card">
-                    <img src="" class="card-img-top" id="image4">
-                    <div class="card-body">
-                        <h5 class="card-title title4"></h5>
-                        <p class="card-text"><a href="">View top review</a></p>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
     </div>

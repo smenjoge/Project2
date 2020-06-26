@@ -14,9 +14,8 @@ const axios = require('axios');
 // =============================================================
 module.exports = function(app) {
 
-  // GET route for getting all of the todos
+  // GET route to get details of input movie by calling OMDB API
   app.get("/api/movie/:name", async function(req, res) {
-    console.log(`Movie Name `, req.params.name);
     let qs = {
         params: {
           t: req.params.name,
@@ -25,12 +24,11 @@ module.exports = function(app) {
     };
     
     const response = await axios.get('http://www.omdbapi.com', qs);
+
     const {Title, Poster, imdbID} = response.data;
     const movieInsert = await db.Movie.create({Title, Poster, imdbID});
     res.json(response.data);
   });
-
-  //app.get("/api/reviews"
 
   app.post("/api/reviews", async function(req, res) {
     const {review_title, review_text, movieImdbID} = req.body;
@@ -39,7 +37,7 @@ module.exports = function(app) {
     res.end();
   });
 
-  // DELETE route for deleting todos. We can get the id of the todo to be deleted from
+  // DELETE route for deleting review. We can get the id of the review to be deleted from
   // req.params.id
   app.delete("/api/reviews/:id", async function(req, res) {
     // We just have to specify which todo we want to destroy with "where"
@@ -50,5 +48,4 @@ module.exports = function(app) {
     })
     res.json(results);
   });
-
 };
