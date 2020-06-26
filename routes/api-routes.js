@@ -33,7 +33,6 @@ module.exports = function(app) {
   app.post("/api/reviews", async function(req, res) {
     const {review_title, review_text, movieImdbID} = req.body;
     const results = await db.Review.create({review_title, review_text, movieImdbID});
-    console.log(`Post review: `, results);
     res.end();
   });
 

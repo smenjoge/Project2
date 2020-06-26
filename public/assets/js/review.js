@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
-  var reviewContainer = $(".review-container");
-  $(document).on("click", "button.delete", handleReviewDelete);
-  $(document).on("click", "button.edit", handleReviewEdit);
-  var reviews;
-  var reviewstoAdd = [];
+    var reviewContainer = $(".review-container");
+    $(document).on("click", "button.delete", handleReviewDelete);
+    $(document).on("click", "button.edit", handleReviewEdit);
+    var reviews;
+    var reviewstoAdd = [];
 
     $(document).on("click", ".addReviewNoAdd", function () {
 

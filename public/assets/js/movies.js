@@ -55,7 +55,7 @@ $(document).ready(function () {
                 movieImdbID: movieDetails.imdbID
             }
             movieLocalStorage.unshift(movieObj);
-            if (movieLocalStorage.length > 10) { 
+            if (movieLocalStorage.length > 5) { 
                 movieLocalStorage.splice(movieLocalStorage.length-1, 1);
             }
             localStorage.setItem("movies", JSON.stringify(movieLocalStorage));
@@ -72,7 +72,7 @@ $(document).ready(function () {
         $("#poster").attr({src: omdbAPIResp.Poster, alt: omdbAPIResp.Title} );
     };
 
-    // When user clicks add-btn
+    // When user clicks Add Review Button
     $("#addReview").on("click", function (event) {
         event.preventDefault();
 
@@ -87,11 +87,18 @@ $(document).ready(function () {
         $.post("/api/reviews", newReview)
             // On success, run the following code
             .then(function (data) {
-                // Log the data we found
-                console.log(data);
-
+                window.location.replace("/review/" + movieImdbID);
             });
         $("#reviewTitle").val("");
         $("#reviewText").val("");
+    });
+
+    $("#viewReviews").on("click", function () {
+        // Send an AJAX GET-request with jQuery
+        $.get("/review/" + movieImdbID)
+            // On success, run the following code
+            .then(function (data) {
+                console.log("reviews Page loaded");
+            });
     });
 });
