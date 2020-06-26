@@ -30,10 +30,25 @@ module.exports = function(app) {
     res.json(response.data);
   });
 
+  //app.get("/api/reviews"
+
   app.post("/api/reviews", async function(req, res) {
     const {review_title, review_text, movieImdbID} = req.body;
     const results = await db.Review.create({review_title, review_text, movieImdbID});
     console.log(`Post review: `, results);
     res.end();
   });
+
+  // DELETE route for deleting todos. We can get the id of the todo to be deleted from
+  // req.params.id
+  app.delete("/api/reviews/:id", async function(req, res) {
+    // We just have to specify which todo we want to destroy with "where"
+    const results = await db.Review.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    res.json(results);
+  });
+
 };
