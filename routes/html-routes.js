@@ -13,7 +13,6 @@ module.exports = function (app) {
       res.sendFile(path.join(__dirname, "../public/review.html"));
     });
     app.get("/review", function (req, res) {
-      console.log(`from route 3`, path); 
       res.sendFile(path.join(__dirname, "../public/review.html"));
     });
   };
