@@ -70,4 +70,13 @@ $(document).ready(function () {
 
     });
 
+    // This function deletes a review when the user clicks the delete button
+    function handleReviewDelete(event) {
+        var id = $(this).data("id");
+        $.ajax({
+          method: "DELETE",
+          url: "/api/reviews/" + id
+        })
+      }
+
 });

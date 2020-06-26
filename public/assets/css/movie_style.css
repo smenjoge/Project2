@@ -1,4 +1,7 @@
 /* index */
+body {
+    font-family: 'Lora', serif;
+}
 .jumbotron {
     background-image: url("../img/header.jpg");
     background-repeat: no-repeat;
@@ -11,15 +14,18 @@
     color: white;
 }
 
+h1 {
+    margin-bottom: 30px;
+}
+
 #search-term {
     margin-left: 20px;
 }
 
 .img-fluid {
     width: 75%;
+    box-shadow: 11px 7px 36px -10px rgba(0,0,0,0.75);
 }
-
-
 
 .img-responsive {
     float: left;
@@ -28,6 +34,10 @@
 
 .searchHistory{
     margin-top: 20px;
+    margin-bottom: 20px;
+    background-position: center;
+    background-size: cover;
+    color: white;
 }
 
 .movies {
@@ -37,7 +47,6 @@ margin-bottom: 20px;
 .displayNone {
     display: none;
  }
-
 
 .footer {
     border-top: double black;
@@ -53,5 +62,23 @@ margin-bottom: 20px;
     color: white;
 }
 
+.historyCard {
+    margin:50px;
+}
 
+.fa {
+    margin: 5px;
+}
 
+h5 {
+    font-weight: 700;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+#moviePoster {
+    width: 25%;
+    margin: 20px;
+}
