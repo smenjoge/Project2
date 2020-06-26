@@ -13,64 +13,54 @@ $(document).ready(function () {
             newCard.removeClass("displayNone");
             newCard.removeClass("historyCard");
             newCard.find(".card-img-top").attr({src: movieLocalStorage[i].poster, alt:  movieLocalStorage[i].name})
-            newCard.find("a").attr("href", "/review" + movieLocalStorage[i].movieImdbID)
+            newCard.find("a").attr("href", "/review/" + movieLocalStorage[i].movieImdbID)
             $(".historyMovies").append(newCard);
         }
-    }
+    };
 
-
-    $("#addReview").on("click", function (event) {
+    $(document).on("submit", ".searchMovie", async function (event) {
+        // Make sure to preventDefault on a submit event.
         event.preventDefault();
-        const userReview = {
-            user: $("#userName").val().trim(),
-            title: $("#reviewTitle").val().trim(),
-            text: $("#reviewText").val().trim()
-        }
-        submitReview(userReview);
-    })
+        $(".search-results").removeClass("displayNone");
+        $(".search-history").removeClass("displayNone");
+        $(".recommended").addClass("displayNone");
 
-    function submitReview(item) {
-        $.post("/api/reviews/", item)
-            .then(() => {
-                console.log("review sent")
-            }
-            );
-    }
-
-
-
-    // Function to call GET route on server side, to get movie information from OMDB API
-    // This function also adds the movie details returned from server to the local storage
-    async function getMovieDetails(movieSearch) {
-        $.get("/api/movie/" + movieSearch, async function(movieDetails) {
+        let movieSearch = $("#search-term").val().trim();
+        
+        // call GET route on server side, to get movie information from OMDB API
+        $.get("/api/movie/" + movieSearch, function(movieDetails) {
             displayResult(movieDetails);
             movieImdbID = movieDetails.imdbID;
-            let movieFound;
-
-            // If local storage is not empty, use filter function to search if the movie
-            // just searched is already in the local storage. If not, then only it will be added
-            // to the local storage
-            if (movieLocalStorage.length > 0) {
-                movieFound = await movieLocalStorage.filter(movie => movie.movieImdbID === movieImdbID);
-            }; 
-            if (!movieFound) {
-                let movieObj = {
-                    name: movieDetails.Title,
-                    year: movieDetails.Year,
-                    genre: movieDetails.Genre,
-                    actors: movieDetails.Actors,
-                    plot: movieDetails.Plot,
-                    poster: movieDetails.Poster,
-                    movieImdbID: movieDetails.imdbID
-                }
-                movieLocalStorage.unshift(movieObj);
-                if (movieLocalStorage.length > 10) { 
-                    movieLocalStorage.splice(movieLocalStorage.length-1, 1);
-                }
-                localStorage.setItem("movies", JSON.stringify(movieLocalStorage));
-            }
+            addLocalStorage(movieDetails);
         });
-    };
+    });
+
+    // If local storage is not empty, use filter function to search if the movie
+    // just searched is already in the local storage. If not, then only it will be added
+    // to the local storage
+    async function addLocalStorage(movieDetails) {
+        let movieFound = [];
+
+        if (movieLocalStorage.length > 0) {
+            movieFound = await movieLocalStorage.filter(movie => movie.movieImdbID === movieDetails.imdbID);
+        }; 
+        if (movieFound.length === 0) {
+            let movieObj = {
+                name: movieDetails.Title,
+                year: movieDetails.Year,
+                genre: movieDetails.Genre,
+                actors: movieDetails.Actors,
+                plot: movieDetails.Plot,
+                poster: movieDetails.Poster,
+                movieImdbID: movieDetails.imdbID
+            }
+            movieLocalStorage.unshift(movieObj);
+            if (movieLocalStorage.length > 10) { 
+                movieLocalStorage.splice(movieLocalStorage.length-1, 1);
+            }
+            localStorage.setItem("movies", JSON.stringify(movieLocalStorage));
+        }
+    }
    
     // Function to display Movie info on html page
     function displayResult(omdbAPIResp) {
@@ -81,7 +71,6 @@ $(document).ready(function () {
         $("#plot").text(omdbAPIResp.Plot);
         $("#poster").attr({src: omdbAPIResp.Poster, alt: omdbAPIResp.Title} );
     };
-
 
     // When user clicks add-btn
     $("#addReview").on("click", function (event) {
@@ -105,5 +94,4 @@ $(document).ready(function () {
         $("#reviewTitle").val("");
         $("#reviewText").val("");
     });
-
 });
