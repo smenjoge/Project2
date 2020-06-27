@@ -30,7 +30,7 @@
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="assets/css/movie_style.css">
+    <link rel="stylesheet" href="./assets/css/movie_style.css">
 
 </head>
 
@@ -92,50 +92,21 @@
     <!-- Review -->
     <div class="container review">
         <div class="row">
-            <div class="col-md reviewMain">
-                <h2>Movie Reviews</h2>
-                <p id="movieTitle"></p>
-                <img src="assets/img/city.jpg" id="reviewImg">
-            </div>
-
             <div class="col-md reviewList">
-                <div class="card displayNone">
+                <h2>Reviews</h2>
+                <p id="movieTitle"></p>
+                <img id="reviewImg">
+                <br>
+                <div class="card reviewCard displayNone">
                     <div class="card-body ">
-                        <h5 class="reviewAuthor"></h5>
+                        <h5 class="reviewTitle"></h5>
                         <p class="reviewText"></p>
                         <button type="button" class="btn btn-outline-primary fa fa-thumbs-up"></button>
                         <button type="button" class="btn btn-outline-primary fa fa-thumbs-down"></button>
                         <button type="button" class="btn btn-dark editReview">Edit Review</button>
                         <button type="button" class="btn btn-danger deleteReview">Delete</button>
                     </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="reviewAuthor">Jane</h5>
-                        <p class="reviewText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero inventore
-                            dolorum, blanditiis voluptatibus dicta nulla eaque necessitatibus aspernatur beatae quaerat
-                            odit numquam amet laboriosam distinctio doloremque explicabo odio quas ipsam cupiditate
-                            laborum fugit quibusdam mollitia! Corrupti nam quod similique molestiae ullam iste
-                            laudantium magni voluptates neque? Dolor rem praesentium quam.</p>
-                        <button type="button" class="btn btn-outline-primary fa fa-thumbs-up"></button>
-                        <button type="button" class="btn btn-outline-primary fa fa-thumbs-down"></button>
-                        <button type="button" class="btn btn-dark addReview">Edit Review</button>
-                        <button type="button" class="btn btn-danger deleteReview">Delete</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title reviewAuthor">James</h5>
-                        <p class="card-text reviewText">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Laboriosam voluptatibus amet ea accusamus. Neque ducimus at doloremque eos doloribus rem.
-                        </p>
-                        <button type="button" class="btn btn-outline-primary fa fa-thumbs-up"></button>
-                        <button type="button" class="btn btn-outline-primary fa fa-thumbs-down"></button>
-                        <button type="button" class="btn btn-dark addReview">Edit Review</button>
-                        <button type="button" class="btn btn-danger deleteReview">Delete</button>
-                    </div>
-                </div>
+                </div>    
             </div>
         </div>
     </div>

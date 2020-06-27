@@ -72,7 +72,7 @@ h1 {
     margin: 10px 0 25px 0;
     background-position: center;
     background-size: cover;
-    color: white;
+    /* color: white; */
 }
 
 .movies {

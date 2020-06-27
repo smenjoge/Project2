@@ -7,22 +7,35 @@ $(document).ready(function () {
     if (!movieLocalStorage) {
         movieLocalStorage =[];
     } else {
+        displayHistory(); 
+    };
+
+    function displayHistory() {
         $(".search-history").removeClass("displayNone");
+        $(".historyMovies .history").remove();
         for (let i=0; i < movieLocalStorage.length; i++ ) {
             let newCard = $(".historyCard").clone();
             newCard.removeClass("displayNone");
             newCard.removeClass("historyCard");
+            newCard.addClass("history");
+            // add id attr for movie id here. Also change the <a> tag below -
+            // to normal div- Delinger to work on this. 
             newCard.find(".card-img-top").attr({src: movieLocalStorage[i].poster, alt:  movieLocalStorage[i].name})
-            newCard.find("a").attr("href", "/review/" + movieLocalStorage[i].movieImdbID)
+            //newCard.find("a").attr("href", "/review/" + movieLocalStorage[i].movieImdbID)
             $(".historyMovies").append(newCard);
         }
-    };
+    }
+
+    // Delinger to work on this
+    // add an event handler for clicking on card with class="history"
+    // get the movieIMDBId from id attribute of "this" and pass that to function 
+    // redirectToReviews() defined at the bottom. the function will add to local storage 
+    // and load review.html
 
     $(document).on("submit", ".searchMovie", async function (event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
         $(".search-results").removeClass("displayNone");
-        $(".search-history").removeClass("displayNone");
         $(".recommended").addClass("displayNone");
 
         let movieSearch = $("#search-term").val().trim();
@@ -33,6 +46,7 @@ $(document).ready(function () {
             movieImdbID = movieDetails.imdbID;
             addLocalStorage(movieDetails);
         });
+        $("#search-term").val("");
     });
 
     // If local storage is not empty, use filter function to search if the movie
@@ -42,6 +56,7 @@ $(document).ready(function () {
         let movieFound = [];
 
         if (movieLocalStorage.length > 0) {
+            displayHistory(); 
             movieFound = await movieLocalStorage.filter(movie => movie.movieImdbID === movieDetails.imdbID);
         }; 
         if (movieFound.length === 0) {
@@ -55,7 +70,7 @@ $(document).ready(function () {
                 movieImdbID: movieDetails.imdbID
             }
             movieLocalStorage.unshift(movieObj);
-            if (movieLocalStorage.length > 10) { 
+            if (movieLocalStorage.length > 5) { 
                 movieLocalStorage.splice(movieLocalStorage.length-1, 1);
             }
             localStorage.setItem("movies", JSON.stringify(movieLocalStorage));
@@ -72,29 +87,32 @@ $(document).ready(function () {
         $("#poster").attr({src: omdbAPIResp.Poster, alt: omdbAPIResp.Title} );
     };
 
-    // When user clicks add-btn
+    // When user clicks Add Review Button
     $("#addReview").on("click", function (event) {
         event.preventDefault();
 
         // Make a newReview object
         var newReview = {
-            movieImdbID: movieImdbID,
+            MovieImdbID: movieImdbID,
             review_title: $("#reviewTitle").val().trim(),
             review_text: $("#reviewText").val().trim()
         };
 
         // Send an AJAX POST-request with jQuery
         $.post("/api/reviews", newReview)
-            // On success, run the following code
-            .then(function (data) {
-                // Log the data we found
-                console.log(data);
-
+            .then(function () {
+                window.location.replace("review.html");
             });
         $("#reviewTitle").val("");
         $("#reviewText").val("");
     });
 
+    $("#viewReviews").on("click", function () {
+        redirectToReviews(movieImdbID);
+    });
 
-    
+    function redirectToReviews(movieIDtoSave) {
+        // Add movieIDtoSave to Local storage here - Daniel to work on this
+        window.location.replace("review.html");
+    };
 });
