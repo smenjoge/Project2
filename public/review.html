@@ -35,15 +35,24 @@
 </head>
 
 <body>
-    <ul class="nav justify-content-center header">
-        <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="modal" data-target="#reviewModal" data-whatever="@mdo">Add
-                Review</a>
-        </li>
-    </ul>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <strong>
+                <a href="index.html" id="logo"> <h1 class="display-4">Movie GOAT</a></h1>
+            </strong>
+            <form class="form-group form-inline searchMovie">
+                <label for="search">Search Movie:</label>
+                <input type="text" class="form-control" id="search-term" placeholder="The Dark Knight">
+                <button type="submit" class="btn submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+<center>
+    <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal" data-dismiss="modal"
+        data-target="#reviewModal" data-whatever="@mdo">Add
+        Review</button>
+    </center>
 
     <!--modal-->
     <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -83,18 +92,19 @@
     <!-- Review -->
     <div class="container review">
         <div class="row">
-            <div class="col-md">
-                <h2>Reviews</h2>
+            <div class="col-md reviewMain">
+                <h2>Movie Reviews</h2>
                 <p id="movieTitle"></p>
                 <img src="assets/img/city.jpg" id="reviewImg">
+            </div>
 
+            <div class="col-md reviewList">
                 <div class="card displayNone">
                     <div class="card-body ">
                         <h5 class="reviewAuthor"></h5>
-                        </strong>
                         <p class="reviewText"></p>
-                        <i class="fa fa-thumbs-up"></i>
-                        <i class="fa fa-thumbs-down"></i>
+                        <button type="button" class="btn btn-outline-primary fa fa-thumbs-up"></button>
+                        <button type="button" class="btn btn-outline-primary fa fa-thumbs-down"></button>
                         <button type="button" class="btn btn-dark editReview">Edit Review</button>
                         <button type="button" class="btn btn-danger deleteReview">Delete</button>
                     </div>
@@ -103,10 +113,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="reviewAuthor">Jane</h5>
-                        </strong>
-                        <p class="reviewText">this movies is great</p>
-                        <i class="fa fa-thumbs-up"></i>
-                        <i class="fa fa-thumbs-down"></i>
+                        <p class="reviewText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero inventore
+                            dolorum, blanditiis voluptatibus dicta nulla eaque necessitatibus aspernatur beatae quaerat
+                            odit numquam amet laboriosam distinctio doloremque explicabo odio quas ipsam cupiditate
+                            laborum fugit quibusdam mollitia! Corrupti nam quod similique molestiae ullam iste
+                            laudantium magni voluptates neque? Dolor rem praesentium quam.</p>
+                        <button type="button" class="btn btn-outline-primary fa fa-thumbs-up"></button>
+                        <button type="button" class="btn btn-outline-primary fa fa-thumbs-down"></button>
                         <button type="button" class="btn btn-dark addReview">Edit Review</button>
                         <button type="button" class="btn btn-danger deleteReview">Delete</button>
                     </div>
@@ -114,18 +127,31 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title reviewAuthor">James</h5>
-                        </strong>
-                        <p class="card-text reviewText">this movies sucks</p>
-                        <i class="fa fa-thumbs-up"></i>
-                        <i class="fa fa-thumbs-down"></i>
+                        <p class="card-text reviewText">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Laboriosam voluptatibus amet ea accusamus. Neque ducimus at doloremque eos doloribus rem.
+                        </p>
+                        <button type="button" class="btn btn-outline-primary fa fa-thumbs-up"></button>
+                        <button type="button" class="btn btn-outline-primary fa fa-thumbs-down"></button>
                         <button type="button" class="btn btn-dark addReview">Edit Review</button>
                         <button type="button" class="btn btn-danger deleteReview">Delete</button>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
+
+    <footer class="page-footer font-small special-color-dark pt-4">
+        <div class="container">
+            <a href="#" class="fa fa-facebook-f"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-instagram"></a>
+        </div>
+
+        <div class="footer-copyright">&#169; 2020 Copyright Laureni Wilkinson-S&aacute;nchez, Delinger
+            Rodriguez, Daniel Fellner, Sandesh
+            Menjoge</a>
+        </div>
+    </footer>
 
 
     <script src="./assets/js/reviews.js" type="text/javascript"></script>

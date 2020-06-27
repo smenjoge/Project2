@@ -94,4 +94,7 @@ $(document).ready(function () {
         $("#reviewTitle").val("");
         $("#reviewText").val("");
     });
+
+
+    
 });
