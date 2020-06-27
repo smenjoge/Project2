@@ -7,22 +7,27 @@ $(document).ready(function () {
     if (!movieLocalStorage) {
         movieLocalStorage =[];
     } else {
+        displayHistory(); 
+    };
+
+    function displayHistory() {
         $(".search-history").removeClass("displayNone");
+        $(".historyMovies .history").remove();
         for (let i=0; i < movieLocalStorage.length; i++ ) {
             let newCard = $(".historyCard").clone();
             newCard.removeClass("displayNone");
             newCard.removeClass("historyCard");
+            newCard.addClass("history");
             newCard.find(".card-img-top").attr({src: movieLocalStorage[i].poster, alt:  movieLocalStorage[i].name})
             newCard.find("a").attr("href", "/review/" + movieLocalStorage[i].movieImdbID)
             $(".historyMovies").append(newCard);
         }
-    };
+    }
 
     $(document).on("submit", ".searchMovie", async function (event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
         $(".search-results").removeClass("displayNone");
-        $(".search-history").removeClass("displayNone");
         $(".recommended").addClass("displayNone");
 
         let movieSearch = $("#search-term").val().trim();
@@ -33,6 +38,7 @@ $(document).ready(function () {
             movieImdbID = movieDetails.imdbID;
             addLocalStorage(movieDetails);
         });
+        $("#search-term").val(" ");
     });
 
     // If local storage is not empty, use filter function to search if the movie
@@ -42,6 +48,7 @@ $(document).ready(function () {
         let movieFound = [];
 
         if (movieLocalStorage.length > 0) {
+            displayHistory(); 
             movieFound = await movieLocalStorage.filter(movie => movie.movieImdbID === movieDetails.imdbID);
         }; 
         if (movieFound.length === 0) {

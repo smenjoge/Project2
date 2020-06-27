@@ -37,7 +37,7 @@ h1 {
     margin-bottom: 20px;
     background-position: center;
     background-size: cover;
-    color: white;
+    /* color: white; */
 }
 
 .movies {
