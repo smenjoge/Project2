@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+
+
   $(document).on("click", "button.deleteReview", handleReviewDelete);
   $(document).on("click", "button.editReview", handleReviewEdit);
   let reviewT;
@@ -38,5 +40,7 @@ $(document).ready(function () {
       url: "/api/reviews/" + id
     }).then(getReviews);
   };
+
+  
 
 });
