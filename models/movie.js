@@ -10,9 +10,19 @@ module.exports = function(sequelize, DataTypes) {
         },
         imdbID: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            primaryKey: true
         }
     });
+
+    Movie.associate = function(models) {
+        // Associating Author with Posts
+        // When an Author is deleted, also delete any associated Posts
+        Movie.hasMany(models.Review, {
+          onDelete: "cascade"
+        });
+      };
+
     return Movie;
   };
   

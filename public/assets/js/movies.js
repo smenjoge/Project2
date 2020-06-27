@@ -18,11 +18,19 @@ $(document).ready(function () {
             newCard.removeClass("displayNone");
             newCard.removeClass("historyCard");
             newCard.addClass("history");
+            // add id attr for movie id here. Also change the <a> tag below -
+            // to normal div- Delinger to work on this. 
             newCard.find(".card-img-top").attr({src: movieLocalStorage[i].poster, alt:  movieLocalStorage[i].name})
-            newCard.find("a").attr("href", "/review/" + movieLocalStorage[i].movieImdbID)
+            //newCard.find("a").attr("href", "/review/" + movieLocalStorage[i].movieImdbID)
             $(".historyMovies").append(newCard);
         }
     }
+
+    // Delinger to work on this
+    // add an event handler for clicking on card with class="history"
+    // get the movieIMDBId from id attribute of "this" and pass that to function 
+    // redirectToReviews() defined at the bottom. the function will add to local storage 
+    // and load review.html
 
     $(document).on("submit", ".searchMovie", async function (event) {
         // Make sure to preventDefault on a submit event.
@@ -38,7 +46,7 @@ $(document).ready(function () {
             movieImdbID = movieDetails.imdbID;
             addLocalStorage(movieDetails);
         });
-        $("#search-term").val(" ");
+        $("#search-term").val("");
     });
 
     // If local storage is not empty, use filter function to search if the movie
@@ -85,27 +93,26 @@ $(document).ready(function () {
 
         // Make a newReview object
         var newReview = {
-            movieImdbID: movieImdbID,
+            MovieImdbID: movieImdbID,
             review_title: $("#reviewTitle").val().trim(),
             review_text: $("#reviewText").val().trim()
         };
 
         // Send an AJAX POST-request with jQuery
         $.post("/api/reviews", newReview)
-            // On success, run the following code
-            .then(function (data) {
-                window.location.replace("/review/" + movieImdbID);
+            .then(function () {
+                window.location.replace("review.html");
             });
         $("#reviewTitle").val("");
         $("#reviewText").val("");
     });
 
     $("#viewReviews").on("click", function () {
-        // Send an AJAX GET-request with jQuery
-        $.get("/review/" + movieImdbID)
-            // On success, run the following code
-            .then(function (data) {
-                console.log("reviews Page loaded");
-            });
+        redirectToReviews(movieImdbID);
     });
+
+    function redirectToReviews(movieIDtoSave) {
+        // Add movieIDtoSave to Local storage here - Daniel to work on this
+        window.location.replace("review.html");
+    };
 });

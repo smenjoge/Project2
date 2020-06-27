@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
             len: [1]
             }
-        },
+        }
         // review_rating: {
         //     type: DataTypes.INTEGER,
         //     defaultValue: 0
@@ -22,11 +22,33 @@ module.exports = function(sequelize, DataTypes) {
         //     type: DataTypes.INTEGER,
         //     allowNull: false
         // },
-        movieImdbID: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
+        // movieImdbID: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false
+        // }
     });
+
+    Review.associate = function(models) {
+        // We're saying that a Post should belong to an Author
+        // A Post can't be created without an Author due to the foreign key constraint
+        Review.belongsTo(models.Movie, {
+          foreignKey: {
+            allowNull: false
+          },
+          sourceKey: 'imdbID'
+        });
+    };
+
+    // Review.associate = function(models) {
+    //     // We're saying that a Post should belong to an Author
+    //     // A Post can't be created without an Author due to the foreign key constraint
+    //     Review.belongsTo(models.User, {
+    //       foreignKey: {
+    //         allowNull: false
+    //       }
+    //     });
+    // };
+    
     return Review;
   };
   

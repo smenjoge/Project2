@@ -1,82 +1,47 @@
 $(document).ready(function () {
 
-    var reviewContainer = $(".review-container");
-    $(document).on("click", "button.delete", handleReviewDelete);
-    $(document).on("click", "button.edit", handleReviewEdit);
-    var reviews;
-    var reviewstoAdd = [];
+//   $(document).on("click", "button.deleteReview", handleReviewDelete);
+//   $(document).on("click", "button.editReview", handleReviewEdit);
+  let reviewT;
+  let reviewAuth;
 
-    $(document).on("click", ".addReviewNoAdd", function () {
+  getReviews();
 
-        $.get("/api/posts/:" + imdbID, function (data) {
-            console.log("Reviews", data);
-            reviews = data;
-            if (!reviews || !reviews.length) {
-                displayEmpty();
-            }
-            else {
-                initializeRows();
-            }
-        });
-
-        function initializeRows() {
-            reviewContainer.empty();
-            for (var i = 0; i < reviews.length; i++) {
-                reviewsToAdd.push(createNewRow(reviews[i]));
-            }
-            reviewContainer.append(reviewstoAdd);
-        }
-
-        function createNewRow(review) {
-            var newReviewCard = $("<div>");
-            newReviewCard.addClass("card");
-            var newReviewCardHeading = $("<div>");
-            newReviewCardHeading.addClass("card-header");
-            var deleteBtn = $("<button>");
-            deleteBtn.text("x");
-            deleteBtn.addClass("delete btn btn-danger");
-            var editBtn = $("<button>");
-            editBtn.text("EDIT");
-            editBtn.addClass("edit btn btn-default");
-            var newReviewTitle = $("<h2>");
-            var newReviewDate = $("<small>");
-            var newReviewCategory = $("<h5>");
-            newReviewCategory.text(review.review_text);
-            newReviewCategory.css({
-              float: "right",
-              "font-weight": "700",
-              "margin-top":
-              "-15px"
-            });
-            var newReviewCardBody = $("<div>");
-            newReviewCardBody.addClass("card-body");
-            var newReviewBody = $("<p>");
-            newReviewTitle.text(review.title + " ");
-            newReviewBody.text(review.body);
-            var formattedDate = new Date(review.createdAt);
-            formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
-            newReviewDate.text(formattedDate);
-            newReviewTitle.append(newReviewDate);
-            newReviewCardHeading.append(deleteBtn);
-            newReviewCardHeading.append(editBtn);
-            newReviewCardHeading.append(newReviewTitle);
-            newReviewCardHeading.append(newReviewCategory);
-            newReviewCardBody.append(newReviewBody);
-            newReviewCard.append(newReviewCardHeading);
-            newReviewCard.append(newReviewCardBody);
-            newReviewCard.data("post", review);
-            return newReviewCard;
-          }
-
+  function getReviews() {
+      // get movieid from localstorage and send in below route- Daniel to work on this
+    $.get("/api/reviews/" + movieId, function (data) {
+        renderReviewList(data);
     });
+  }
 
-    // This function deletes a review when the user clicks the delete button
-    function handleReviewDelete(event) {
-        var id = $(this).data("id");
-        $.ajax({
-          method: "DELETE",
-          url: "/api/reviews/" + id
-        })
-      }
+  function renderReviewList(reviewData) {
+    $("#movieTitle").text(reviewData[0].Title);
+    $("#reviewImg").attr({src: reviewData[0].Poster, alt: reviewData[0].Title});
+    let reviewsArr = reviewData[0].Reviews;
+    for (i = 0; i < reviewsArr.length; i++) {
+      let newDiv = $(".reviewCard").clone();
+      newDiv.removeClass("displayNone");
+      newDiv.removeClass("reviewCard");
+      reviewTitle = reviewsArr[i].review_title;
+      newDiv.find(".reviewTitle").text(reviewTitle);
+      newDiv.find(".reviewText").text(reviewsArr[i].review_text);
+      $(".reviewList").append(newDiv);
+    };
+  };
+
+
+
+//   function handleReviewEdit() {
+//     var 
+
+//   };
+
+//   function handleReviewDelete() {
+//     var id = $(this).data("id");
+//     $.ajax({
+//       method: "DELETE",
+//       url: "/api/reviews/" + id
+//     }).then(getReviews);
+//   };
 
 });

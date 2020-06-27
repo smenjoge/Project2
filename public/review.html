@@ -30,7 +30,7 @@
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="assets/css/movie_style.css">
+    <link rel="stylesheet" href="./assets/css/movie_style.css">
 
 </head>
 
@@ -83,46 +83,21 @@
     <!-- Review -->
     <div class="container review">
         <div class="row">
-            <div class="col-md">
+            <div class="col-md reviewList">
                 <h2>Reviews</h2>
                 <p id="movieTitle"></p>
-                <img src="assets/img/city.jpg" id="reviewImg">
-
-                <div class="card displayNone">
+                <img id="reviewImg">
+                <br>
+                <div class="card reviewCard displayNone">
                     <div class="card-body ">
-                        <h5 class="reviewAuthor"></h5>
-                        </strong>
+                        <h5 class="reviewTitle"></h5>
                         <p class="reviewText"></p>
                         <i class="fa fa-thumbs-up"></i>
                         <i class="fa fa-thumbs-down"></i>
                         <button type="button" class="btn btn-dark editReview">Edit Review</button>
                         <button type="button" class="btn btn-danger deleteReview">Delete</button>
                     </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="reviewAuthor">Jane</h5>
-                        </strong>
-                        <p class="reviewText">this movies is great</p>
-                        <i class="fa fa-thumbs-up"></i>
-                        <i class="fa fa-thumbs-down"></i>
-                        <button type="button" class="btn btn-dark addReview">Edit Review</button>
-                        <button type="button" class="btn btn-danger deleteReview">Delete</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title reviewAuthor">James</h5>
-                        </strong>
-                        <p class="card-text reviewText">this movies sucks</p>
-                        <i class="fa fa-thumbs-up"></i>
-                        <i class="fa fa-thumbs-down"></i>
-                        <button type="button" class="btn btn-dark addReview">Edit Review</button>
-                        <button type="button" class="btn btn-danger deleteReview">Delete</button>
-                    </div>
-                </div>
-                
+                </div>    
             </div>
         </div>
     </div>
