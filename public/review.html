@@ -35,15 +35,24 @@
 </head>
 
 <body>
-    <ul class="nav justify-content-center header">
-        <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="modal" data-target="#reviewModal" data-whatever="@mdo">Add
-                Review</a>
-        </li>
-    </ul>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <strong>
+                <a href="index.html" id="logo"> <h1 class="display-4">Movie GOAT</a></h1>
+            </strong>
+            <form class="form-group form-inline searchMovie">
+                <label for="search">Search Movie:</label>
+                <input type="text" class="form-control" id="search-term" placeholder="The Dark Knight">
+                <button type="submit" class="btn submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+<center>
+    <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal" data-dismiss="modal"
+        data-target="#reviewModal" data-whatever="@mdo">Add
+        Review</button>
+    </center>
 
     <!--modal-->
     <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -92,8 +101,8 @@
                     <div class="card-body ">
                         <h5 class="reviewTitle"></h5>
                         <p class="reviewText"></p>
-                        <i class="fa fa-thumbs-up"></i>
-                        <i class="fa fa-thumbs-down"></i>
+                        <button type="button" class="btn btn-outline-primary fa fa-thumbs-up"></button>
+                        <button type="button" class="btn btn-outline-primary fa fa-thumbs-down"></button>
                         <button type="button" class="btn btn-dark editReview">Edit Review</button>
                         <button type="button" class="btn btn-danger deleteReview">Delete</button>
                     </div>
@@ -101,6 +110,19 @@
             </div>
         </div>
     </div>
+
+    <footer class="page-footer font-small special-color-dark pt-4">
+        <div class="container">
+            <a href="#" class="fa fa-facebook-f"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-instagram"></a>
+        </div>
+
+        <div class="footer-copyright">&#169; 2020 Copyright Laureni Wilkinson-S&aacute;nchez, Delinger
+            Rodriguez, Daniel Fellner, Sandesh
+            Menjoge</a>
+        </div>
+    </footer>
 
 
     <script src="./assets/js/reviews.js" type="text/javascript"></script>

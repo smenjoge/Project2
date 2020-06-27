@@ -9,7 +9,8 @@
     <title>Movie GOAT</title>
 
     <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap style -->
@@ -40,11 +41,9 @@
             <strong>
                 <h1 class="display-4">Movie GOAT</h1>
             </strong>
-            <p class="lead"></p>
-
             <form class="form-group form-inline searchMovie">
                 <label for="search">Search Movie:</label>
-                <input type="text" class="form-control" id="search-term" placeholder="Enter Movie/Series Name">
+                <input type="text" class="form-control" id="search-term" placeholder="The Dark Knight">
                 <button type="submit" class="btn submit"><i class="fa fa-search"></i></button>
             </form>
         </div>
@@ -52,8 +51,8 @@
 
     <div class="container">
 
-        <div class="justify-center recommended">
-            <h2>Recommended Movies</h2>
+        <div class="row justify-content-center recommended">
+            <h1>Recommended Movies</h1>
         </div>
 
 
@@ -85,7 +84,7 @@
                                 <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
                                     data-dismiss="modal" data-target="#exampleModal" data-whatever="@mdo">Add
                                     Review</button>
-                                <a href="review.html"><button type="button"
+                                <a href="review.html" id="viewButton"><button type="button"
                                         class="btn btn-outline-primary viewReviews">View Reviews</a></button>
                                 <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
                                     data-dismiss="modal">Close</button>
@@ -96,8 +95,8 @@
                     </div>
                 </div>
                 <!--Modal: Name-->
-                <a><img class="img-fluid z-depth-1" src="assets/img/lotr.jpg" alt="video" data-toggle="modal"
-                        data-target="#modal1"></a>
+                <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset" src="assets/img/lotr.jpg" alt="video"
+                        data-toggle="modal" data-target="#modal1"></a>
 
             </div>
             <!-- Grid column -->
@@ -126,7 +125,7 @@
                                 <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
                                     data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add
                                     Review</button>
-                                <a href="review.html"><button type="button"
+                                <a href="review.html" id="viewButton"><button type="button"
                                         class="btn btn-outline-primary viewReviews">View Reviews</a></button>
                                 <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
                                     data-dismiss="modal">Close</button>
@@ -140,7 +139,7 @@
                 </div>
                 <!--Modal: Name-->
 
-                <a><img class="img-fluid z-depth-1" src="assets/img/matrix.jpg" alt="video" data-toggle="modal"
+                <a><img class="img-fluid z-depth-1 box" src="assets/img/matrix.jpg" alt="video" data-toggle="modal"
                         data-target="#modal2"></a>
 
             </div>
@@ -174,7 +173,7 @@
                                 <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
                                     data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add
                                     Review</button>
-                                <a href="review.html"><button type="button"
+                                <a href="review.html" id="viewButton"><button type="button"
                                         class="btn btn-outline-primary viewReviews">View Reviews</a></button>
                                 <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
                                     data-dismiss="modal">Close</button>
@@ -187,7 +186,7 @@
                 </div>
                 <!--Modal: Name-->
 
-                <a><img class="img-fluid z-depth-1" src="assets/img/dark_knight.jpg" alt="video" data-toggle="modal"
+                <a><img class="img-fluid z-depth-1 box" src="assets/img/dark_knight.jpg" alt="video" data-toggle="modal"
                         data-target="#modal3"></a>
 
             </div>
@@ -224,7 +223,7 @@
                                 <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
                                     data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add
                                     Review</button>
-                                <a href="review.html"><button type="button"
+                                <a href="review.html" id="viewButton"><button type="button"
                                         class="btn btn-outline-primary viewReviews">View Reviews</a></button>
                                 <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
                                     data-dismiss="modal">Close</button>
@@ -237,7 +236,7 @@
                 </div>
                 <!--Modal: Name-->
 
-                <a><img class="img-fluid z-depth-1" src="assets/img/fight.jpg" alt="video" data-toggle="modal"
+                <a><img class="img-fluid z-depth-1 box" src="assets/img/fight.jpg" alt="video" data-toggle="modal"
                         data-target="#modal4"></a>
 
             </div>
@@ -271,7 +270,7 @@
                                 <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
                                     data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add
                                     Review</button>
-                                <a href="review.html"><button type="button"
+                                <a href="review.html" id="viewButton"><button type="button"
                                         class="btn btn-outline-primary viewReviews">View Reviews</a></button>
                                 <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
                                     data-dismiss="modal">Close</button>
@@ -284,7 +283,7 @@
                 </div>
                 <!--Modal: Name-->
 
-                <a><img class="img-fluid z-depth-1" src="assets/img/goodfellas.jpg" alt="video" data-toggle="modal"
+                <a><img class="img-fluid z-depth-1 box" src="assets/img/goodfellas.jpg" alt="video" data-toggle="modal"
                         data-target="#modal5"></a>
 
             </div>
@@ -318,7 +317,7 @@
                                 <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
                                     data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add
                                     Review</button>
-                                <a href="review.html"><button type="button"
+                                <a href="review.html" id="viewButton"><button type="button"
                                         class="btn btn-outline-primary viewReviews">View Reviews</a></button>
                                 <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
                                     data-dismiss="modal">Close</button>
@@ -331,7 +330,7 @@
                 </div>
                 <!--Modal: Name-->
 
-                <a><img class="img-fluid z-depth-1" src="assets/img/city.jpg" alt="video" data-toggle="modal"
+                <a><img class="img-fluid z-depth-1 box" src="assets/img/city.jpg" alt="video" data-toggle="modal"
                         data-target="#modal6"></a>
 
             </div>
@@ -355,21 +354,21 @@
                     <form>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">User Name:</label>
-                            <input type="text" class="form-control" id="userName">
+                            <input type="text" class="form-control" id="userName" placeholder="Sandesh Menjoge">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Title:</label>
-                            <input type="text" class="form-control" id="reviewTitle">
+                            <input type="text" class="form-control" id="reviewTitle" placeholder="The Matrix">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Review:</label>
-                            <textarea class="form-control" id="reviewText"></textarea>
+                            <textarea class="form-control" id="reviewText" placeholder="This movie is great"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a href="review.html"><button type="button" class="btn btn-dark" id="addReview"
-                            data-dismiss="modal">Post
+                    <a href="review.html" id="viewButton"><button type="button" class="btn btn-outline-primary"
+                            id="addReview" data-dismiss="modal">Post
                             Review</a></button>
                 </div>
             </div>
@@ -381,20 +380,23 @@
             <div class="col-md-4">
                 <img id="poster" class="img-responsive">
             </div>
-            <div class="col-md-8">
-                <p> <span class="font-weight-bold">Movie Name: </span> <span id="name"></span> </p>
-                <p> <span class="font-weight-bold">Year: </span> <span id="year"></span> </p>
-                <p> <span class="font-weight-bold">Genre: </span> <span id="genre"></span> </p>
-                <p> <span class="font-weight-bold">Actors: </span> <span id="actors"></span> </p>
-                <p> <span class="font-weight-bold">Plot: </span> <span id="plot"></span> </p>
+            <div class="col-md">
+                <p><b>Movie Name: </b><span id="name"></span></p>
+                <p><b>Year: </b><span id="year"></span></p>
+                <p><b>Genre: </b><span id="genre"></span></p>
+                <p><b>Actors: </b><span id="actors"></span></p>
+                <p><b>Plot: </b><span id="plot"></span></p>
 
-                <button type="button" class="btn btn-dark addReview" data-toggle="modal" data-target="#exampleModal"
+                <button type="button" class="btn btn-primary addReview" data-toggle="modal" data-target="#exampleModal"
                     data-whatever="@mdo">Add Review</button>
-                <button type="button" class="btn btn-secondary" id="viewReviews">View Reviews</button>
+                <!-- <button type="button" class="btn btn-secondary" id="viewReviews">View Reviews</button> -->
+                <!-- Need to check with Laureni about below change -->
+                <a href="review.html" id="viewBtn"><button type="button" class="btn btn-primary">View
+                        Reviews</a></button>
             </div>
         </div>
     </div>
-    
+
     <div class="container search-history displayNone">
         <!-- Search History -->
         <div>
@@ -403,22 +405,29 @@
         <div class="row row-cols-1 row-cols-sm-5 historyMovies">
 
             <div class="col sm-3 historyCard displayNone ">
-                <div class="card">
+                <!-- <div class="card"> --> 
                     <a href="">
                         <img  class="card-img-top img-thumbnail">
                     </a>
-                </div>
+                <!-- </div> -->
             </div>
         </div>
 
     </div>
 
+    <footer class="page-footer font-small special-color-dark pt-4">
+        <div class="container">
+            <a href="#" class="fa fa-facebook-f"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-instagram"></a>
+        </div>
 
-    <div class="footer">
-        <p> &#169; 2020 Copyright Laureni Wilkinson-S&aacute;nchez, Delinger Rodriguez, Daniel Fellner, Sandesh
-            Menjoge
-        </p>
-    </div>
+        <div class="footer-copyright">&#169; 2020 Copyright Laureni Wilkinson-S&aacute;nchez, Delinger
+            Rodriguez, Daniel Fellner, Sandesh
+            Menjoge</a>
+        </div>
+    </footer>
+
 
     <script src="./assets/js/movies.js" type="text/javascript"></script>
 
