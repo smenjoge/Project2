@@ -20,7 +20,7 @@ $(document).ready(function () {
             newCard.addClass("history");
             // add id attr for movie id here. Also change the <a> tag below -
             // to normal div- Delinger to work on this. 
-            newCard.find(".card-img-top").attr({src: movieLocalStorage[i].poster, alt:  movieLocalStorage[i].name})
+            newCard.find(".card-img-top").attr({src: movieLocalStorage[i].poster, alt:  movieLocalStorage[i].name, id: movieLocalStorage[i].movieImdbID}).addClass("movieHistory");
             //newCard.find("a").attr("href", "/review/" + movieLocalStorage[i].movieImdbID)
             $(".historyMovies").append(newCard);
         }
@@ -31,6 +31,18 @@ $(document).ready(function () {
     // get the movieIMDBId from id attribute of "this" and pass that to function 
     // redirectToReviews() defined at the bottom. the function will add to local storage 
     // and load review.html
+
+
+
+    $(".movieHistory").on("click", function (event) {
+        event.preventDefault();
+        var movieIDtoSave = $(this).attr("id");
+
+        console.log(movieIDtoSave);
+
+        redirectToReviews(movieIDtoSave);
+      
+    });
 
     $(document).on("submit", ".searchMovie", async function (event) {
         // Make sure to preventDefault on a submit event.
@@ -113,6 +125,7 @@ $(document).ready(function () {
 
     function redirectToReviews(movieIDtoSave) {
         // Add movieIDtoSave to Local storage here - Daniel to work on this
+        localStorage.setItem("movieReview", movieIDtoSave);
         window.location.replace("review.html");
     };
 });
