@@ -41,11 +41,11 @@ module.exports = function(app) {
     res.json(response.data);
   });
 
-  app.get("/api/review/:movieId", async function (req, res) {
-    let sessionID = req.params.movieId//sessionstorage.getItem("movieID");
+  app.get("/api/reviews/:movieId", async function (req, res) {
+    //let sessionID = req.params.movieId//sessionstorage.getItem("movieID");
     const dbReviews = await db.Movie.findAll({
           where: {
-            imdbID: sessionID
+            imdbID:  req.params.movieId //sessionID
           },
           include: [db.Review]
     });

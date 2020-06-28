@@ -8,11 +8,12 @@ $(document).ready(function () {
   let parsed = JSON.parse(movieData)
   let objectWeNeed = parsed[0];
   console.log(objectWeNeed.movieImdbID);
+  var movieId = localStorage.getItem("movieReview")
   
   getReviews();
 
   function getReviews() {
-    $.get("/api/reviews/" + movieImdbID, function (data) {
+    $.get("/api/reviews/" + movieId, function (data) {
         renderReviewList(data);
     });
   }
