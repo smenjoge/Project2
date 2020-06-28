@@ -2,14 +2,17 @@ $(document).ready(function () {
 
 //   $(document).on("click", "button.deleteReview", handleReviewDelete);
 //   $(document).on("click", "button.editReview", handleReviewEdit);
-  let reviewT;
-  let reviewAuth;
 
+// Made it so the the last searched for movie will have its ID retreived from local storage
+  let movieData = localStorage.getItem("movies");
+  let parsed = JSON.parse(movieData)
+  let objectWeNeed = parsed[0];
+  console.log(objectWeNeed.movieImdbID);
+  
   getReviews();
 
   function getReviews() {
-      // get movieid from localstorage and send in below route- Daniel to work on this
-    $.get("/api/reviews/" + movieId, function (data) {
+    $.get("/api/reviews/" + movieImdbID, function (data) {
         renderReviewList(data);
     });
   }
