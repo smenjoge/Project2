@@ -71,7 +71,7 @@
                         <div class="modal-content">
                             <!--Body-->
                             <div class="modal-body mb-0 p-0">
-                                <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                                <div class="embed-responsive modal-body-music embed-responsive-16by9 z-depth-1-half">
                                     <iframe width="560" height="315" src="https://www.youtube.com/embed/r5X-hFf6Bwo"
                                         frameborder="0"
                                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -81,12 +81,13 @@
 
                             <!--Footer-->
                             <div class="modal-footer justify-content-center">
-                                <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
-                                    data-dismiss="modal" data-target="#exampleModal" data-whatever="@mdo">Add
+                                <button type="button" class="btn btn-outline-primary addReview endVideo"
+                                    data-toggle="modal" data-dismiss="modal" data-target="#exampleModal"
+                                    data-whatever="@mdo">Add
                                     Review</button>
-                                <a href="review.html" id="viewButton"><button type="button"
-                                        class="btn btn-outline-primary viewReviews">View Reviews</a></button>
-                                <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
+                                <button type="button" class="btn btn-outline-primary viewReviews endVideo">View
+                                    Reviews</button>
+                                <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4 endVideo"
                                     data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -125,8 +126,7 @@
                                 <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
                                     data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add
                                     Review</button>
-                                <a href="review.html" id="viewButton"><button type="button"
-                                        class="btn btn-outline-primary viewReviews">View Reviews</a></button>
+                                <button type="button" class="btn btn-outline-primary viewReviews">View Reviews</button>
                                 <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
                                     data-dismiss="modal">Close</button>
                             </div>
@@ -173,8 +173,7 @@
                                 <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
                                     data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add
                                     Review</button>
-                                <a href="review.html" id="viewButton"><button type="button"
-                                        class="btn btn-outline-primary viewReviews">View Reviews</a></button>
+                                <button type="button" class="btn btn-outline-primary viewReviews ">View Reviews</button>
                                 <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
                                     data-dismiss="modal">Close</button>
                             </div>
@@ -223,8 +222,7 @@
                                 <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
                                     data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add
                                     Review</button>
-                                <a href="review.html" id="viewButton"><button type="button"
-                                        class="btn btn-outline-primary viewReviews">View Reviews</a></button>
+                                <button type="button" class="btn btn-outline-primary viewReviews ">View Reviews</button>
                                 <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
                                     data-dismiss="modal">Close</button>
                             </div>
@@ -270,8 +268,7 @@
                                 <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
                                     data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add
                                     Review</button>
-                                <a href="review.html" id="viewButton"><button type="button"
-                                        class="btn btn-outline-primary viewReviews">View Reviews</a></button>
+                                <button type="button" class="btn btn-outline-primary viewReviews ">View Reviews</button>
                                 <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
                                     data-dismiss="modal">Close</button>
                             </div>
@@ -317,8 +314,7 @@
                                 <button type="button" class="btn btn-outline-primary addReview" data-toggle="modal"
                                     data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal">Add
                                     Review</button>
-                                <a href="review.html" id="viewButton"><button type="button"
-                                        class="btn btn-outline-primary viewReviews">View Reviews</a></button>
+                                <button type="button" class="btn btn-outline-primary viewReviews ">View Reviews</button>
                                 <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4"
                                     data-dismiss="modal">Close</button>
                             </div>
@@ -367,9 +363,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a href="review.html" id="viewButton"><button type="button" class="btn btn-outline-primary"
-                            id="addReview" data-dismiss="modal">Post
-                            Review</a></button>
+                    <div id="msg"></div>
+                    <button type="button" class="btn btn-outline-primary" id="addReview">Post Review</button>
                 </div>
             </div>
         </div>
@@ -378,7 +373,7 @@
     <div class="container search-results displayNone">
         <div class="row">
             <div class="col-md">
-                <img id="poster" class="img-responsive">
+                <img id="poster" class="img-responsive justify-content-center">
             </div>
             <div class="col-md">
                 <p><b>Movie Name: </b><span id="name"></span></p>
@@ -391,8 +386,8 @@
                     data-whatever="@mdo">Add Review</button>
                 <button type="button" class="btn btn-secondary" id="viewReviews">View Reviews</button>
                 <!-- Need to check with Laureni about below change -->
-                <!-- <a href="review.html" id="viewBtn"><button type="button" class="btn btn-primary">View
-                        Reviews</a></button> -->
+                <a href="review.html" id="viewBtn"><button type="button" class="btn btn-primary">View
+                        Reviews</a></button>
             </div>
         </div>
     </div>
@@ -405,10 +400,10 @@
         <div class="row row-cols-1 row-cols-sm-5 historyMovies">
 
             <div class="col sm-3 historyCard displayNone ">
-                <!-- <div class="card"> --> 
-                    <!-- <a href=""> -->
-                        <img  class="card-img-top img-thumbnail">
-                    <!-- </a> -->
+                <!-- <div class="card"> -->
+                <!-- <a href=""> -->
+                <img class="card-img-top img-thumbnail box">
+                <!-- </a> -->
                 <!-- </div> -->
             </div>
         </div>

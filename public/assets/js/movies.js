@@ -5,22 +5,22 @@ $(document).ready(function () {
     // the movie posters will be displayed in the Search History section on HTML
     let movieLocalStorage = JSON.parse(localStorage.getItem("movies"));
     if (!movieLocalStorage) {
-        movieLocalStorage =[];
+        movieLocalStorage = [];
     } else {
-        displayHistory(); 
+        displayHistory();
     };
 
     function displayHistory() {
         $(".search-history").removeClass("displayNone");
         $(".historyMovies .history").remove();
-        for (let i=0; i < movieLocalStorage.length; i++ ) {
+        for (let i = 0; i < movieLocalStorage.length; i++) {
             let newCard = $(".historyCard").clone();
             newCard.removeClass("displayNone");
             newCard.removeClass("historyCard");
             newCard.addClass("history");
             // add id attr for movie id here. Also change the <a> tag below -
             // to normal div- Delinger to work on this. 
-            newCard.find(".card-img-top").attr({src: movieLocalStorage[i].poster, alt:  movieLocalStorage[i].name, id: movieLocalStorage[i].movieImdbID}).addClass("movieHistory");
+            newCard.find(".card-img-top").attr({ src: movieLocalStorage[i].poster, alt: movieLocalStorage[i].name, id: movieLocalStorage[i].movieImdbID }).addClass("movieHistory");
             //newCard.find("a").attr("href", "/review/" + movieLocalStorage[i].movieImdbID)
             $(".historyMovies").append(newCard);
         }
@@ -41,7 +41,7 @@ $(document).ready(function () {
         console.log(movieIDtoSave);
 
         redirectToReviews(movieIDtoSave);
-      
+
     });
 
     $(document).on("submit", ".searchMovie", async function (event) {
@@ -51,9 +51,9 @@ $(document).ready(function () {
         $(".recommended").addClass("displayNone");
 
         let movieSearch = $("#search-term").val().trim();
-        
+
         // call GET route on server side, to get movie information from OMDB API
-        $.get("/api/movie/" + movieSearch, function(movieDetails) {
+        $.get("/api/movie/" + movieSearch, function (movieDetails) {
             displayResult(movieDetails);
             movieImdbID = movieDetails.imdbID;
             addLocalStorage(movieDetails);
@@ -68,9 +68,9 @@ $(document).ready(function () {
         let movieFound = [];
 
         if (movieLocalStorage.length > 0) {
-            displayHistory(); 
+            displayHistory();
             movieFound = await movieLocalStorage.filter(movie => movie.movieImdbID === movieDetails.imdbID);
-        }; 
+        };
         if (movieFound.length === 0) {
             let movieObj = {
                 name: movieDetails.Title,
@@ -82,13 +82,13 @@ $(document).ready(function () {
                 movieImdbID: movieDetails.imdbID
             }
             movieLocalStorage.unshift(movieObj);
-            if (movieLocalStorage.length > 5) { 
-                movieLocalStorage.splice(movieLocalStorage.length-1, 1);
+            if (movieLocalStorage.length > 5) {
+                movieLocalStorage.splice(movieLocalStorage.length - 1, 1);
             }
             localStorage.setItem("movies", JSON.stringify(movieLocalStorage));
         }
     }
-   
+
     // Function to display Movie info on html page
     function displayResult(omdbAPIResp) {
         $("#name").text(omdbAPIResp.Title);
@@ -96,8 +96,12 @@ $(document).ready(function () {
         $("#genre").text(omdbAPIResp.Genre);
         $("#actors").text(omdbAPIResp.Actors);
         $("#plot").text(omdbAPIResp.Plot);
-        $("#poster").attr({src: omdbAPIResp.Poster, alt: omdbAPIResp.Title} );
+        $("#poster").attr({ src: omdbAPIResp.Poster, alt: omdbAPIResp.Title });
     };
+
+    function displayMessage(message) {
+        $("#msg").text(message);
+    }
 
     // When user clicks Add Review Button
     $("#addReview").on("click", function (event) {
@@ -106,17 +110,29 @@ $(document).ready(function () {
         // Make a newReview object
         var newReview = {
             MovieImdbID: movieImdbID,
+            user_name: $("#userName").val().trim(),
             review_title: $("#reviewTitle").val().trim(),
             review_text: $("#reviewText").val().trim()
         };
 
-        // Send an AJAX POST-request with jQuery
-        $.post("/api/reviews", newReview)
-            .then(function () {
-                window.location.replace("review.html");
-            });
-        $("#reviewTitle").val("");
-        $("#reviewText").val("");
+        if (newReview.user_name === "") {
+            displayMessage("error", "Username cannot be blank");
+        } else if (newReview.review_title === "") {
+            displayMessage("error", "Title cannot be blank");
+        } else if (newReview.review_text === "") {
+            displayMessage("error", "Review cannot be blank");
+        } else {
+            displayMessage("success", "Review submitted successfully");
+            // Send an AJAX POST-request with jQuery
+            $.post("/api/reviews", newReview)
+                .then(function () {
+                    window.location.replace("review.html");
+                });
+            $("#userName").val("");
+            $("#reviewTitle").val("");
+            $("#reviewText").val("");
+
+        }
     });
 
     $("#viewReviews").on("click", function () {
@@ -128,4 +144,27 @@ $(document).ready(function () {
         localStorage.setItem("movieReview", movieIDtoSave);
         window.location.replace("review.html");
     };
+
+
+    var url = $('.modal-body-music iframe').attr('src');
+
+    $('.endVideo').click(function () {
+        $('.modal-body-music').hide();
+        $('.modal-body-music iframe').attr('src', '');
+    });
+
+    $('.endVideo').click(function () {
+        $('.modal-body-music').show();
+        $('.modal-body-music iframe').attr('src', url);
+    });
+
+    $('.videoBTN').on('click', function() {
+
+        $("#my_iframe").attr("src", $(this).attr("data-video"));
+
+    }).on('hidden.bs.modal', function () {
+        $(this).find('video')[0].pause();
+    });
+
+
 });
