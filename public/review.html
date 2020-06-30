@@ -36,17 +36,17 @@
 
 <body>
     <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+        <div class="container text-center">
             <strong>
                 <a href="index.html" id="logo">
                     <h1 class="display-4">Movie GOAT
                 </a></h1>
             </strong>
-            <form class="form-group form-inline searchMovie">
+            <!-- <form class="form-group form-inline searchMovie">
                 <label for="search">Search Movie:</label>
                 <input type="text" class="form-control" id="search-term" placeholder="The Dark Knight">
                 <button type="submit" class="btn submit"><i class="fa fa-search"></i></button>
-            </form>
+            </form> -->
         </div>
     </div>
 
@@ -70,21 +70,21 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">User Name:</label>
-                            <input type="text" class="form-control" id="userName" placeholder="Sandesh Menjoge">
+                            <label for="recipient-name" class="col-form-label">Reviewer Name:</label>
+                            <input type="text" class="form-control" id="userName" placeholder="Enter name here">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Title:</label>
-                            <input type="text" class="form-control" id="reviewTitle" placeholder="The Matrix">
+                            <input type="text" class="form-control" id="reviewTitle" placeholder="Enter review title here">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Review:</label>
-                            <textarea class="form-control" id="reviewText" placeholder="This movie is great"></textarea>
+                            <textarea class="form-control" id="reviewText" placeholder="Tell us about this Movie"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <div id="msg"></div>
+                    <div class="animate__animated animate__heartBeat" id="msg"></div>
                     <button type="button" class="btn btn-outline-primary" id="addReview">Post Review</button>
                 </div>
             </div>
@@ -99,19 +99,22 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md reviewList">
+            <div class="col-md-4">
                 <p id="movieTitle"></p>
                 <img id="reviewImg">
                 <!-- <img id="reviewImg" src="assets/img/city.jpg"> -->
                 <br>
             </div>
 
-            <div class="col-md">
-                <div class="card reviewCard displayNone">
+            <div class="col-md-8 reviewList">
+                <div class="card mb-2 reviewCard displayNone">
                     <div class="card-body ">
                         <h5 class="reviewTitle"></h5>
                         <p class="userName"></p>
                         <p class="reviewText"></p>
+                        <button type="button" class="btn fa fa-thumbs-up"></button>
+                        <span class="count"></span>
+                        <button type="button" class="btn fa fa-thumbs-down"></button>
                         <button type="button" class="btn btn-dark editReview">Edit Review</button>
                         <button type="button" class="btn btn-danger deleteReview">Delete</button>
                     </div>
@@ -143,7 +146,6 @@
             </div>
         </div>
     </div>
-    
 
     <footer class="page-footer font-small special-color-dark pt-4">
         <div class="container">

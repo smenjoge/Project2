@@ -3,20 +3,15 @@ $(document).ready(function () {
   //   $(document).on("click", "button.deleteReview", handleReviewDelete);
   //   $(document).on("click", "button.editReview", handleReviewEdit);
 
-  // Made it so the the last searched for movie will have its ID retreived from local storage
-  // let movieData = localStorage.getItem("movies");
-  // let parsed = JSON.parse(movieData)
-  // let objectWeNeed = parsed[0];
-  // console.log(objectWeNeed.movieImdbID);
-  var movieId = localStorage.getItem("movieReview")
-
+  let movieId = localStorage.getItem("movieReview");
+  
   getReviews();
 
   function getReviews() {
     $.get("/api/reviews/" + movieId, function (data) {
       renderReviewList(data);
     });
-  }
+  };
 
   function renderReviewList(reviewData) {
     $("#movieTitle").text(reviewData[0].Title);
@@ -26,13 +21,8 @@ $(document).ready(function () {
       let newDiv = $(".reviewCard").clone();
       newDiv.removeClass("displayNone");
       newDiv.removeClass("reviewCard");
-      reviewTitle = reviewsArr[i].review_title;
-
       newDiv.attr("id", reviewsArr[i].id);
-      newDiv(".reviewText").prepend(`<button type="button" class="btn btn-outline-primary fa fa-thumbs-up"></button>`);
-      newDiv(".reviewText").prepend(`<button type="button" class="btn btn-outline-primary fa fa-thumbs-down"></button>`);
-
-      newDiv.find(".reviewTitle").text(reviewTitle);
+      newDiv.find(".reviewTitle").text(reviewsArr[i].review_title);
       newDiv.find(".reviewText").text(reviewsArr[i].review_text);
       $(".reviewList").append(newDiv);
     };
@@ -55,6 +45,52 @@ $(document).ready(function () {
     }).then(function () {
       location.reload();
     });
+  });
+
+  function displayMessage(message) {
+    $("#msg").text(message);
+  }
+
+  $("#addReview").on("click", function (event) {
+    event.preventDefault();
+
+    // Make a newReview object
+    let newReview = {
+        MovieImdbID: movieId,
+        user_name: $("#userName").val().trim(),
+        review_title: $("#reviewTitle").val().trim(),
+        review_text: $("#reviewText").val().trim()
+    };
+
+    if (newReview.user_name === "") {
+        displayMessage("Reviewer name cannot be blank");
+    } else if (newReview.review_title === "") {
+        displayMessage("Title cannot be blank");
+    } else if (newReview.review_text === "") {
+        displayMessage("Review cannot be blank");
+    } else {
+        // Send an AJAX POST-request with jQuery
+        $.post("/api/reviews", newReview)
+            .then(function () {
+              window.location.reload();
+            });
+        $("#userName").val("");
+        $("#reviewTitle").val("");
+        $("#reviewText").val("");
+    }
+  });
+
+  $(document).on("click", "button.deleteReview", function(event){
+  // $(".deleteReview").on("click", function(event){
+    //Get ID of the review that needs to be deleted. 
+    let reviewIDDel = $(this).parent().parent().attr("id");
+    $.ajax({
+      method: "DELETE",
+      url: "/api/reviews/" + reviewIDDel
+    })
+      .then(function () {
+              window.location.reload();
+          });
   });
 
   $(document).on("click", ".fa-thumbs-down", function (event) {
