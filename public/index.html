@@ -37,28 +37,27 @@
 <body>
 
     <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+        <div class="container text-center">
             <strong>
                 <h1 class="display-4">Movie GOAT</h1>
             </strong>
             <form class="form-group form-inline searchMovie">
                 <label for="search">Search Movie:</label>
-                <input type="text" class="form-control" id="search-term" placeholder="The Dark Knight">
+                <input type="text" class="form-control" id="search-term" placeholder="Enter Movie Name">
                 <button type="submit" class="btn submit"><i class="fa fa-search"></i></button>
             </form>
+            <p class="displayNone animate__animated animate__heartBeat" id="errMsg"></p>
         </div>
     </div>
 
     <div class="container">
 
         <div class="row justify-content-center recommended">
-            <h1>Recommended Movies</h1>
+            <h2>Recommended Movies</h2>
         </div>
-
 
         <!-- Grid row -->
         <div class="row recommended">
-
             <!-- Grid column -->
             <div class="col-lg-4 col-md-12 mb-4">
                 <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/lotr.jpg" alt="video"
@@ -123,9 +122,8 @@
                 </div>
             </div>
             <!--Modal: Name-->
-
-
         </div>
+    
 
         <!--inner modal-->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -141,17 +139,17 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">User Name:</label>
-                                <input type="text" class="form-control" id="userName" placeholder="Sandesh Menjoge">
+                                <label for="recipient-name" class="col-form-label">Reviewer Name:</label>
+                                <input type="text" class="form-control" id="userName" placeholder="Enter name here">
                             </div>
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Title:</label>
-                                <input type="text" class="form-control" id="reviewTitle" placeholder="The Matrix">
+                                <input type="text" class="form-control" id="reviewTitle" placeholder="Enter review title here">
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">Review:</label>
                                 <textarea class="form-control" id="reviewText"
-                                    placeholder="This movie is great"></textarea>
+                                    placeholder="Tell us about this Movie"></textarea>
                             </div>
                         </form>
                     </div>
@@ -177,49 +175,38 @@
 
                     <button type="button" class="btn btn-primary addReview" data-toggle="modal"
                         data-target="#exampleModal" data-whatever="@mdo">Add Review</button>
-                    <button type="button" class="btn btn-secondary" id="viewReviews">View Reviews</button>
-                    <!-- Need to check with Laureni about below change -->
-                    <a href="review.html" id="viewBtn"><button type="button" class="btn btn-primary">View
-                            Reviews</a></button>
+                    <button type="button" class="btn btn-primary" id="viewReviews">View Reviews</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="container search-history displayNone">
-            <!-- Search History -->
-            <div>
-                <h2 class="searchHistory text-center">Search History</h2>
+    <div class="container search-history displayNone">
+        <!-- Search History -->
+        <div>
+            <h2 class="searchHistory text-center">Search History</h2>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-5 historyMovies">
+            <div class="col sm-3 historyCard displayNone ">
+                <img class="card-img-top img-thumbnail box">
             </div>
-            <div class="row row-cols-1 row-cols-sm-5 historyMovies">
+        </div>
+    </div>
 
-                <div class="col sm-3 historyCard displayNone ">
-                    <!-- <div class="card"> -->
-                    <!-- <a href=""> -->
-                    <img class="card-img-top img-thumbnail box">
-                    <!-- </a> -->
-                    <!-- </div> -->
-                </div>
-            </div>
-
+    <footer class="page-footer font-small special-color-dark pt-4">
+        <div class="container">
+            <a href="#" class="fa fa-facebook-f"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-instagram"></a>
         </div>
 
-        <footer class="page-footer font-small special-color-dark pt-4">
-            <div class="container">
-                <a href="#" class="fa fa-facebook-f"></a>
-                <a href="#" class="fa fa-twitter"></a>
-                <a href="#" class="fa fa-instagram"></a>
-            </div>
+        <div class="footer-copyright">&#169; 2020 Copyright Laureni Wilkinson-S&aacute;nchez, Delinger
+            Rodriguez, Daniel Fellner, Sandesh
+            Menjoge</a>
+        </div>
+    </footer>
 
-            <div class="footer-copyright">&#169; 2020 Copyright Laureni Wilkinson-S&aacute;nchez, Delinger
-                Rodriguez, Daniel Fellner, Sandesh
-                Menjoge</a>
-            </div>
-        </footer>
-
-
-        <script src="./assets/js/movies.js" type="text/javascript"></script>
-
-
+    <script src="./assets/js/movies.js" type="text/javascript"></script>
 </body>
 
 </html>

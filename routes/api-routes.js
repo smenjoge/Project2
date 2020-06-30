@@ -9,8 +9,6 @@
 // (remember: connection.js -> orm.js -> route file)
 const db = require("../models");
 const axios = require('axios');
-const sessionstorage = require('sessionstorage');
-
 
 // Routes
 // =============================================================
@@ -27,36 +25,34 @@ module.exports = function(app) {
     
     const response = await axios.get('http://www.omdbapi.com', qs);
 
-    const {Title, Poster, imdbID} = response.data;
-    let checkMovie = 0;
-    checkMovie = await db.Movie.count({
-        where: {
-          imdbID: imdbID
-        }
-    });
-    console.log(checkMovie);
-    if (checkMovie === 0) {
-      const movieInsert = await db.Movie.create({Title, Poster, imdbID});
+    if (response.data.Response === "True") {
+      const {Title, Poster, imdbID} = response.data;
+      let checkMovie = 0;
+      checkMovie = await db.Movie.count({
+          where: {
+            imdbID: imdbID
+          }
+      });
+      if (checkMovie === 0) {
+        const movieInsert = await db.Movie.create({Title, Poster, imdbID});
+      }
     }
     res.json(response.data);
   });
 
   app.get("/api/reviews/:movieId", async function (req, res) {
-    //let sessionID = req.params.movieId//sessionstorage.getItem("movieID");
     const dbReviews = await db.Movie.findAll({
           where: {
-            imdbID:  req.params.movieId //sessionID
+            imdbID:  req.params.movieId 
           },
           include: [db.Review]
     });
-    console.log(`return review `, dbReviews);
     res.json(dbReviews);
   });
 
   app.post("/api/reviews", async function(req, res) {
     const {review_title, review_text, MovieImdbID} = req.body;
-    const results = await db.Review.create({review_title, review_text, MovieImdbID});
-    sessionstorage.setItem("movieID", MovieImdbID);
+    const results = await db.Review.create({review_title, review_text, MovieImdbID});    
     res.end();
   });
 

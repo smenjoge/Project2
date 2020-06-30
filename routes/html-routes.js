@@ -1,4 +1,3 @@
-const sessionstorage = require('sessionstorage');
 const path = require('path');
 
 // Routes
@@ -9,7 +8,6 @@ module.exports = function (app) {
     });
 
     app.get("/review/:movieID", function (req, res) {
-      sessionstorage.setItem("movieID", req.params.movieID);
       res.sendFile(path.join(__dirname, "../public/review.html"));
     });
     app.get("/review", function (req, res) {

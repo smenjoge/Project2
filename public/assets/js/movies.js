@@ -18,45 +18,35 @@ $(document).ready(function () {
             newCard.removeClass("displayNone");
             newCard.removeClass("historyCard");
             newCard.addClass("history");
-            // add id attr for movie id here. Also change the <a> tag below -
-            // to normal div- Delinger to work on this. 
-            newCard.find(".card-img-top").attr({ src: movieLocalStorage[i].poster, alt: movieLocalStorage[i].name, id: movieLocalStorage[i].movieImdbID }).addClass("movieHistory");
-            //newCard.find("a").attr("href", "/review/" + movieLocalStorage[i].movieImdbID)
+            newCard.find(".card-img-top").attr({src: movieLocalStorage[i].poster, id: movieLocalStorage[i].movieImdbID, alt:  movieLocalStorage[i].name});
             $(".historyMovies").append(newCard);
         }
     }
 
-    // Delinger to work on this
-    // add an event handler for clicking on card with class="history"
-    // get the movieIMDBId from id attribute of "this" and pass that to function 
-    // redirectToReviews() defined at the bottom. the function will add to local storage 
-    // and load review.html
-
-
-
-    $(".movieHistory").on("click", function (event) {
-        event.preventDefault();
-        var movieIDtoSave = $(this).attr("id");
-
-        console.log(movieIDtoSave);
-
+    $(".history").on("click", function (event) {
+        // event.preventDefault();
+        let movieIDtoSave = $(this).find("img").attr("id");
         redirectToReviews(movieIDtoSave);
-
     });
 
     $(document).on("submit", ".searchMovie", async function (event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
-        $(".search-results").removeClass("displayNone");
-        $(".recommended").addClass("displayNone");
-
         let movieSearch = $("#search-term").val().trim();
 
         // call GET route on server side, to get movie information from OMDB API
         $.get("/api/movie/" + movieSearch, function (movieDetails) {
-            displayResult(movieDetails);
-            movieImdbID = movieDetails.imdbID;
-            addLocalStorage(movieDetails);
+            if (movieDetails.Response === "True") {
+                $(".search-results").removeClass("displayNone");
+                $(".recommended").addClass("displayNone");
+                $("#errMsg").addClass("displayNone");
+                displayResult(movieDetails);
+                movieImdbID = movieDetails.imdbID;
+                addLocalStorage(movieDetails);
+            } else {
+                $("#errMsg").removeClass("displayNone");
+                $("#errMsg").text(movieDetails.Error);
+            }
         });
         $("#search-term").val("");
     });
@@ -74,10 +64,10 @@ $(document).ready(function () {
         if (movieFound.length === 0) {
             let movieObj = {
                 name: movieDetails.Title,
-                year: movieDetails.Year,
-                genre: movieDetails.Genre,
-                actors: movieDetails.Actors,
-                plot: movieDetails.Plot,
+                // year: movieDetails.Year,
+                // genre: movieDetails.Genre,
+                // actors: movieDetails.Actors,
+                // plot: movieDetails.Plot,
                 poster: movieDetails.Poster,
                 movieImdbID: movieDetails.imdbID
             }
@@ -116,17 +106,16 @@ $(document).ready(function () {
         };
 
         if (newReview.user_name === "") {
-            displayMessage("error", "Username cannot be blank");
+            displayMessage("Reviewer name cannot be blank");
         } else if (newReview.review_title === "") {
-            displayMessage("error", "Title cannot be blank");
+            displayMessage("Title cannot be blank");
         } else if (newReview.review_text === "") {
-            displayMessage("error", "Review cannot be blank");
+            displayMessage("Review cannot be blank");
         } else {
-            displayMessage("success", "Review submitted successfully");
             // Send an AJAX POST-request with jQuery
             $.post("/api/reviews", newReview)
                 .then(function () {
-                    window.location.replace("review.html");
+                    redirectToReviews(movieImdbID);
                 });
             $("#userName").val("");
             $("#reviewTitle").val("");
@@ -140,7 +129,7 @@ $(document).ready(function () {
     });
 
     function redirectToReviews(movieIDtoSave) {
-        // Add movieIDtoSave to Local storage here - Daniel to work on this
+        // Add movieIDtoSave to Local storage here. This Local storage value will be retrieved on reviews page. 
         localStorage.setItem("movieReview", movieIDtoSave);
         window.location.replace("review.html");
     };

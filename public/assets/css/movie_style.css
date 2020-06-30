@@ -14,12 +14,26 @@ body {
     color: white;
 }
 
-h1 {
+h1, h2 {
     margin-bottom: 30px;
 }
 
+h2 {
+    text-decoration: underline;
+}
+
+.searchMovie {
+    margin: auto 30%;
+}
+
 #search-term {
-    margin-left: 20px;
+    margin-left: 10px;
+}
+
+#errMsg,
+#msg {
+    color: red;
+    font-size: x-large;
 }
 
 .img-responsive {
@@ -52,7 +66,9 @@ h1 {
       color: white;
       text-decoration: none;
   }
-
+.search-history {
+    margin-top: 20px;
+}
 
 .historyMovies{
     margin: 10px 0 25px 0;
