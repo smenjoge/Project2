@@ -150,9 +150,58 @@ $(document).ready(function () {
     $('.videoBTN').on('click', function() {
 
         $("#my_iframe").attr("src", $(this).attr("data-video"));
+        var movieIDtoSave = $(this).attr("id");
+        recommendedMovieID = movieIDtoSave;
+        localStorage.setItem("movieReview", movieIDtoSave);
 
     }).on('hidden.bs.modal', function () {
         $(this).find('video')[0].pause();
+    });
+
+    var recommendedMovieID;
+
+    $(".recommendedViewReviews").on("click", function (event) {
+        event.preventDefault();
+    
+        console.log(recommendedMovieID);
+        
+    
+        redirectToReviews(recommendedMovieID);
+    
+    });
+
+    $("#recommendedAddReview").on("click", function (event) {
+        event.preventDefault();
+
+        // Make a newReview object
+        var recommendedNewReview = {
+            MovieImdbID: recommendedMovieID,
+            user_name: $("#recommendedUserName").val().trim(),
+            review_title: $("#recommendedReviewTitle").val().trim(),
+            review_text: $("#recommendedReviewText").val().trim()
+        };
+
+        if (recommendedNewReview.user_name === "") {
+            displayMessage("error", "Username cannot be blank");
+        } else if (recommendedNewReview.review_title === "") {
+            displayMessage("error", "Title cannot be blank");
+        } else if (recommendedNewReview.review_text === "") {
+            displayMessage("error", "Review cannot be blank");
+        } else {
+            displayMessage("success", "Review submitted successfully");
+
+            // Send an AJAX POST-request with jQuery
+            $.post("/api/reviews", recommendedNewReview)
+                .then(function () {
+                    window.location.replace("review.html");
+                });
+            $("#recommendedUserName").val("");
+            $("#recommendedReviewTitle").val("");
+            $("#recommendedReviewText").val("");
+
+            console.log(recommendedNewReview);
+            }
+        
     });
 
 
