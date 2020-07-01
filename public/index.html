@@ -62,32 +62,32 @@
             <div class="col-lg-4 col-md-12 mb-4">
                 <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/lotr.jpg" alt="video"
                         data-toggle="modal" data-target="#videoModal" 
-                        data-video="https://www.youtube.com/embed/r5X-hFf6Bwo"></a>
+                        data-video="https://www.youtube.com/embed/r5X-hFf6Bwo" id="tt0120737"></a>
             </div>
             <div class="col-lg-4 col-md-12 mb-4">
                 <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/matrix.jpg" alt="video"
                         data-toggle="modal" data-target="#videoModal"
-                        data-video="https://www.youtube.com/embed/m8e-FF8MsqU"></a>
+                        data-video="https://www.youtube.com/embed/m8e-FF8MsqU" id="tt0133093"></a>
             </div>
             <div class="col-lg-4 col-md-12 mb-4">
                 <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/dark_knight.jpg"
                         alt="video" data-toggle="modal" data-target="#videoModal"
-                        data-video="https://www.youtube.com/embed/EXeTwQWrcwY"></a>
+                        data-video="https://www.youtube.com/embed/EXeTwQWrcwY" id="tt0468569"></a>
             </div>
             <div class="col-lg-4 col-md-12 mb-4">
                 <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/fight.jpg" alt="video"
                         data-toggle="modal" data-target="#videoModal"
-                        data-video="https://www.youtube.com/embed/qtRKdVHc-cE"></a>
+                        data-video="https://www.youtube.com/embed/qtRKdVHc-cE" id="tt0137523"></a>
             </div>
             <div class="col-lg-4 col-md-12 mb-4">
                 <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/goodfellas.jpg"
                         alt="video" data-toggle="modal" data-target="#videoModal"
-                        data-video="https://www.youtube.com/embed/h3QpxNI-PtE"></a>
+                        data-video="https://www.youtube.com/embed/h3QpxNI-PtE" id="tt0099685"></a>
             </div>
             <div class="col-lg-4 col-md-12 mb-4">
                 <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/city.jpg" alt="video"
                         data-toggle="modal" data-target="#videoModal"
-                        data-video="https://www.youtube.com/embed/dcUOO4Itgmw"></a>
+                        data-video="https://www.youtube.com/embed/dcUOO4Itgmw" id="tt0317248"></a>
             </div>
             <!-- Grid column -->
 
@@ -110,9 +110,9 @@
                         <!--Footer-->
                         <div class="modal-footer justify-content-center">
                             <button type="button" class="btn btn-outline-primary addReview endVideo" data-toggle="modal"
-                                data-dismiss="modal" data-target="#exampleModal">Add
+                                data-dismiss="modal" data-target="#exampleModal2">Add
                                 Review</button>
-                            <button type="button" class="btn btn-outline-primary viewReviews endVideo">View
+                            <button type="button" class="btn btn-outline-primary viewReviews endVideo recommendedViewReviews">View
                                 Reviews</button>
                             <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4 endVideo"
                                 data-dismiss="modal">Close</button>
@@ -156,6 +156,42 @@
                     <div class="modal-footer">
                         <div id="msg"></div>
                         <button type="button" class="btn btn-outline-primary" id="addReview">Post Review</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommended movies modal -->
+        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Review</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">User Name:</label>
+                                <input type="text" class="form-control" id="recommendedUserName" placeholder="Sandesh Menjoge">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Title:</label>
+                                <input type="text" class="form-control" id="recommendedReviewTitle" placeholder="The Matrix">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Review:</label>
+                                <textarea class="form-control" id="recommendedReviewText"
+                                    placeholder="This movie is great"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div id="msg"></div>
+                        <button type="button" class="btn btn-outline-primary" id="recommendedAddReview">Post Review</button>
                     </div>
                 </div>
             </div>
