@@ -12,6 +12,7 @@ body {
 
 .fa-search {
     color: white;
+    font-size: 30px;
 }
 
 h1, h2 {
@@ -98,7 +99,6 @@ footer {
     z-index: 100; 
 } 
 
-.fa-search,
 .fa-facebook-f,
 .fa-twitter,
 .fa-instagram {

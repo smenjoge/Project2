@@ -16,9 +16,8 @@
     <!-- Bootstrap style -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+    <!-- Animate -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -49,7 +48,7 @@
                 <input type="text" class="form-control" id="search-term" placeholder="Enter Movie Name">
                 <button type="submit" class="btn submit"><i class="fa fa-search"></i></button>
             </form>
-            <p class="displayNone animate__animated animate__heartBeat" id="errMsg"></p>
+            <h2 class="displayNone animate__animated animate__heartBeat" id="errMsg"></h2>
         </div>
     </div>
 
@@ -63,13 +62,13 @@
         <div class="row recommended">
             <!-- Grid column -->
             <div class="col-lg-4 col-md-12 mb-4">
-                <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/lotr.jpg" alt="video"
-                        data-toggle="modal" data-target="#videoModal" 
+                <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/lotr.jpg"
+                        alt="video" data-toggle="modal" data-target="#videoModal"
                         data-video="https://www.youtube.com/embed/r5X-hFf6Bwo" id="tt0120737"></a>
             </div>
             <div class="col-lg-4 col-md-12 mb-4">
-                <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/matrix.jpg" alt="video"
-                        data-toggle="modal" data-target="#videoModal"
+                <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/matrix.jpg"
+                        alt="video" data-toggle="modal" data-target="#videoModal"
                         data-video="https://www.youtube.com/embed/m8e-FF8MsqU" id="tt0133093"></a>
             </div>
             <div class="col-lg-4 col-md-12 mb-4">
@@ -78,8 +77,8 @@
                         data-video="https://www.youtube.com/embed/EXeTwQWrcwY" id="tt0468569"></a>
             </div>
             <div class="col-lg-4 col-md-12 mb-4">
-                <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/fight.jpg" alt="video"
-                        data-toggle="modal" data-target="#videoModal"
+                <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/fight.jpg"
+                        alt="video" data-toggle="modal" data-target="#videoModal"
                         data-video="https://www.youtube.com/embed/qtRKdVHc-cE" id="tt0137523"></a>
             </div>
             <div class="col-lg-4 col-md-12 mb-4">
@@ -88,8 +87,8 @@
                         data-video="https://www.youtube.com/embed/h3QpxNI-PtE" id="tt0099685"></a>
             </div>
             <div class="col-lg-4 col-md-12 mb-4">
-                <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/city.jpg" alt="video"
-                        data-toggle="modal" data-target="#videoModal"
+                <a><img class="img-fluid z-depth-1 box hvr-box-shadow-outset videoBTN" src="assets/img/city.jpg"
+                        alt="video" data-toggle="modal" data-target="#videoModal"
                         data-video="https://www.youtube.com/embed/dcUOO4Itgmw" id="tt0317248"></a>
             </div>
             <!-- Grid column -->
@@ -115,7 +114,8 @@
                             <button type="button" class="btn btn-outline-primary addReview endVideo" data-toggle="modal"
                                 data-dismiss="modal" data-target="#exampleModal2">Add
                                 Review</button>
-                            <button type="button" class="btn btn-outline-primary viewReviews endVideo recommendedViewReviews">View
+                            <button type="button"
+                                class="btn btn-outline-primary viewReviews endVideo recommendedViewReviews">View
                                 Reviews</button>
                             <button type="button" class="btn btn-outline-danger btn-rounded btn-md ml-4 endVideo"
                                 data-dismiss="modal">Close</button>
@@ -126,7 +126,7 @@
             </div>
             <!--Modal: Name-->
         </div>
-    
+
 
         <!--inner modal-->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -147,7 +147,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Title:</label>
-                                <input type="text" class="form-control" id="reviewTitle" placeholder="Enter review title here">
+                                <input type="text" class="form-control" id="reviewTitle"
+                                    placeholder="Enter review title here">
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">Review:</label>
@@ -178,23 +179,25 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">User Name:</label>
-                                <input type="text" class="form-control" id="recommendedUserName" placeholder="Sandesh Menjoge">
+                                <label for="recipient-name" class="col-form-label">Reviewer Name:</label>
+                                <input type="text" class="form-control" id="userName" placeholder="Enter name here">
                             </div>
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Title:</label>
-                                <input type="text" class="form-control" id="recommendedReviewTitle" placeholder="The Matrix">
+                                <input type="text" class="form-control" id="reviewTitle"
+                                    placeholder="Enter review title here">
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">Review:</label>
-                                <textarea class="form-control" id="recommendedReviewText"
-                                    placeholder="This movie is great"></textarea>
+                                <textarea class="form-control" id="reviewText"
+                                    placeholder="Tell us about this Movie"></textarea>
                             </div>
                         </form>
-                    </div>
+                     </div>
                     <div class="modal-footer">
                         <div id="msg"></div>
-                        <button type="button" class="btn btn-outline-primary" id="recommendedAddReview">Post Review</button>
+                        <button type="button" class="btn btn-outline-primary" id="recommendedAddReview">Post
+                            Review</button>
                     </div>
                 </div>
             </div>
