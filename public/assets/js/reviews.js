@@ -24,24 +24,21 @@ $(document).ready(function () {
       newDiv.attr("id", reviewsArr[i].id);
       newDiv.find(".reviewTitle").text(reviewsArr[i].review_title);
       newDiv.find(".reviewText").text(reviewsArr[i].review_text);
+      newDiv.find(".count").text(reviewsArr[i].review_rating);
       $(".reviewList").append(newDiv);
     };
   };
 
   $(document).on("click", ".fa-thumbs-up", function (event) {
-    var id = $(this).data("id");
+    var id = $(this).parent().parent().attr("id");
     //parent id from whole review card//
 
-    var newThumbsUp = review_rating++
-     //double check grabbing review_rating
-    console.log(newThumbsUp);
+    //double check grabbing review_rating
     
     // Send the PUT request.
-    $.ajax("/reviews/" + id, {
+    $.ajax("/api/reviews/" + id, {
       type: "PUT",
-      data: JSON.stringify(newThumbsUp),
-      dataType: 'json',
-      contentType: 'application/json'
+      data: {up: true}
     }).then(function () {
       location.reload();
     });
@@ -94,27 +91,22 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".fa-thumbs-down", function (event) {
-    var id = $(this).data("id");
+    var id = $(this).parent().parent().attr("id");
     //parent id from whole review card//
 
-    if (review_rating > 0) {
-      var newThumbsDown = {
-        review_rating: defaultValue--
-      }; //double check
-      console.log(newThumbsDown);
-
-       // Send the PUT request.
-    $.ajax("/reviews/" + id, {
+    //double check grabbing review_rating
+    
+    // Send the PUT request.
+    $.ajax("/api/reviews/" + id, {
       type: "PUT",
-      data: JSON.stringify(newThumbsDown),
-      dataType: 'json',
-      contentType: 'application/json'
+      data: {down: true}
     }).then(function () {
       location.reload();
     });
-    }
+
   });
 
+  
 
   //   function handleReviewEdit() {
   //     var 

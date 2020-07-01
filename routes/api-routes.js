@@ -56,6 +56,17 @@ module.exports = function(app) {
     res.end();
   });
 
+  app.put("/api/reviews/:id", async function (req, res) {
+    let result;
+    console.log(req.body);
+    if (req.body.up) {
+    result = await db.Review.increment("review_rating", {where : {id : req.params.id}});
+    } else if (req.body.down) {
+    result = await db.Review.decrement("review_rating", {where : {id : req.params.id}});
+    }
+    res.json(result);
+  })
+
   // DELETE route for deleting review. We can get the id of the review to be deleted from
   // req.params.id
   app.delete("/api/reviews/:id", async function(req, res) {
