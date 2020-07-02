@@ -24,7 +24,9 @@ $(document).ready(function () {
       newDiv.attr("id", reviewsArr[i].id);
       newDiv.find(".reviewTitle").text(reviewsArr[i].review_title);
       newDiv.find(".reviewText").text(reviewsArr[i].review_text);
+      if (reviewsArr[i].review_rating != 0) {
       newDiv.find(".count").text(reviewsArr[i].review_rating);
+      };
       $(".reviewList").append(newDiv);
     };
   };
