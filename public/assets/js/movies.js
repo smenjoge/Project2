@@ -162,16 +162,17 @@ $(document).ready(function () {
 
     $(".recommendedViewReviews").on("click", function (event) {
         event.preventDefault();
-    
+   
         console.log(recommendedMovieID);
-        
-    
+
         redirectToReviews(recommendedMovieID);
     
     });
 
     $("#recommendedAddReview").on("click", function (event) {
         event.preventDefault();
+
+        console.log(recommendedMovieID);
 
         // Make a newReview object
         var recommendedNewReview = {
