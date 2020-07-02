@@ -148,6 +148,7 @@ $(document).ready(function () {
 
         $("#my_iframe").attr("src", $(this).attr("data-video"));
         recommendedMovieID = $(this).attr("id");
+        localStorage.setItem("movieReview", recommendedMovieID);
 
     }).on('hidden.bs.modal', function () {
         $(this).find('video')[0].pause();
