@@ -7,6 +7,13 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1]
             }
         },
+        review_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
         review_text: {
             type: DataTypes.TEXT,
             allowNull: false,
