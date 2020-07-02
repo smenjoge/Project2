@@ -23,6 +23,11 @@ h2 {
     text-decoration: underline;
 }
 
+#indexLogo {
+    text-decoration: none;
+    color: white;
+}
+
 .searchMovie {
     margin: auto 30%;
 }
