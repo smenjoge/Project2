@@ -1,8 +1,4 @@
 $(document).ready(function () {
-
-  //   $(document).on("click", "button.deleteReview", handleReviewDelete);
-  //   $(document).on("click", "button.editReview", handleReviewEdit);
-
   let movieId = localStorage.getItem("movieReview");
   
   getReviews();
@@ -32,21 +28,6 @@ $(document).ready(function () {
     };
   };
 
-  $(document).on("click", ".fa-thumbs-up", function (event) {
-    var id = $(this).parent().parent().attr("id");
-    //parent id from whole review card//
-
-    //double check grabbing review_rating
-    
-    // Send the PUT request.
-    $.ajax("/api/reviews/" + id, {
-      type: "PUT",
-      data: {up: true}
-    }).then(function () {
-      location.reload();
-    });
-  });
-
   function displayMessage(message) {
     $("#msg").text(message);
   }
@@ -57,7 +38,7 @@ $(document).ready(function () {
     // Make a newReview object
     let newReview = {
         MovieImdbID: movieId,
-        user_name: $("#userName").val().trim(),
+        review_name: $("#userName").val().trim(),
         review_title: $("#reviewTitle").val().trim(),
         review_text: $("#reviewText").val().trim()
     };
@@ -93,14 +74,23 @@ $(document).ready(function () {
           });
   });
 
-  $(document).on("click", ".fa-thumbs-down", function (event) {
-    var id = $(this).parent().parent().attr("id");
-    //parent id from whole review card//
-
-    //double check grabbing review_rating
+  $(document).on("click", ".fa-thumbs-up", function (event) {
+    let reviewId = $(this).parent().parent().attr("id");
     
     // Send the PUT request.
-    $.ajax("/api/reviews/" + id, {
+    $.ajax("/api/reviews/" + reviewId, {
+      type: "PUT",
+      data: {up: true}
+    }).then(function () {
+      location.reload();
+    });
+  });
+
+  $(document).on("click", ".fa-thumbs-down", function (event) {
+    let reviewId = $(this).parent().parent().attr("id");
+    
+    // Send the PUT request.
+    $.ajax("/api/reviews/" + reviewId, {
       type: "PUT",
       data: {down: true}
     }).then(function () {
@@ -108,20 +98,4 @@ $(document).ready(function () {
     });
 
   });
-
-  
-
-  //   function handleReviewEdit() {
-  //     var 
-
-  //   };
-
-  //   function handleReviewDelete() {
-  //     var id = $(this).data("id");
-  //     $.ajax({
-  //       method: "DELETE",
-  //       url: "/api/reviews/" + id
-  //     }).then(getReviews);
-  //   };
-
 });
