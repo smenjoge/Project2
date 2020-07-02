@@ -93,6 +93,10 @@ $(document).ready(function () {
         $("#msg").text(message);
     }
 
+    function displayRecMessage(message) {
+        $("#RecMsg").text(message);
+    }
+
     // When user clicks Add Review Button
     $("#addReview").on("click", function (event) {
         event.preventDefault();
@@ -162,16 +166,17 @@ $(document).ready(function () {
 
     $(".recommendedViewReviews").on("click", function (event) {
         event.preventDefault();
-    
+   
         console.log(recommendedMovieID);
-        
-    
+
         redirectToReviews(recommendedMovieID);
     
     });
 
     $("#recommendedAddReview").on("click", function (event) {
         event.preventDefault();
+
+        console.log(recommendedMovieID);
 
         // Make a newReview object
         var recommendedNewReview = {
@@ -182,13 +187,12 @@ $(document).ready(function () {
         };
 
         if (recommendedNewReview.user_name === "") {
-            displayMessage("error", "Username cannot be blank");
+            displayRecMessage("Username cannot be blank");
         } else if (recommendedNewReview.review_title === "") {
-            displayMessage("error", "Title cannot be blank");
+            displayRecMessage("Title cannot be blank");
         } else if (recommendedNewReview.review_text === "") {
-            displayMessage("error", "Review cannot be blank");
+            displayRecMessage("Review cannot be blank");
         } else {
-            displayMessage("success", "Review submitted successfully");
 
             // Send an AJAX POST-request with jQuery
             $.post("/api/reviews", recommendedNewReview)
@@ -201,7 +205,7 @@ $(document).ready(function () {
 
             console.log(recommendedNewReview);
             }
-        
+    
     });
 
 
