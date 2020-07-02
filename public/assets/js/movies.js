@@ -1,5 +1,6 @@
 $(document).ready(function () {
     let movieImdbID;
+    let recommendedMovieID;
 
     // Check local storage for history of recently searched movies. If found,
     // the movie posters will be displayed in the Search History section on HTML
@@ -24,7 +25,6 @@ $(document).ready(function () {
     }
 
     $(".history").on("click", function (event) {
-        // event.preventDefault();
         let movieIDtoSave = $(this).find("img").attr("id");
         redirectToReviews(movieIDtoSave);
     });
@@ -64,10 +64,6 @@ $(document).ready(function () {
         if (movieFound.length === 0) {
             let movieObj = {
                 name: movieDetails.Title,
-                // year: movieDetails.Year,
-                // genre: movieDetails.Genre,
-                // actors: movieDetails.Actors,
-                // plot: movieDetails.Plot,
                 poster: movieDetails.Poster,
                 movieImdbID: movieDetails.imdbID
             }
@@ -104,7 +100,7 @@ $(document).ready(function () {
         // Make a newReview object
         var newReview = {
             MovieImdbID: movieImdbID,
-            user_name: $("#userName").val().trim(),
+            review_name: $("#userName").val().trim(),
             review_title: $("#reviewTitle").val().trim(),
             review_text: $("#reviewText").val().trim()
         };
@@ -124,7 +120,6 @@ $(document).ready(function () {
             $("#userName").val("");
             $("#reviewTitle").val("");
             $("#reviewText").val("");
-
         }
     });
 
@@ -137,8 +132,6 @@ $(document).ready(function () {
         localStorage.setItem("movieReview", movieIDtoSave);
         window.location.replace("review.html");
     };
-
-
     var url = $('.modal-body-music iframe').attr('src');
 
     $('.endVideo').click(function () {
@@ -154,40 +147,29 @@ $(document).ready(function () {
     $('.videoBTN').on('click', function() {
 
         $("#my_iframe").attr("src", $(this).attr("data-video"));
-        var movieIDtoSave = $(this).attr("id");
-        recommendedMovieID = movieIDtoSave;
-        localStorage.setItem("movieReview", movieIDtoSave);
+        recommendedMovieID = $(this).attr("id");
 
     }).on('hidden.bs.modal', function () {
         $(this).find('video')[0].pause();
     });
 
-    var recommendedMovieID;
-
     $(".recommendedViewReviews").on("click", function (event) {
         event.preventDefault();
-   
-        console.log(recommendedMovieID);
-
         redirectToReviews(recommendedMovieID);
-    
     });
 
     $("#recommendedAddReview").on("click", function (event) {
         event.preventDefault();
-
-        console.log(recommendedMovieID);
-
         // Make a newReview object
         var recommendedNewReview = {
             MovieImdbID: recommendedMovieID,
-            user_name: $("#recommendedUserName").val().trim(),
+            review_name: $("#recommendedUserName").val().trim(),
             review_title: $("#recommendedReviewTitle").val().trim(),
             review_text: $("#recommendedReviewText").val().trim()
         };
 
         if (recommendedNewReview.user_name === "") {
-            displayRecMessage("Username cannot be blank");
+            displayMessage("Reviewer name cannot be blank");
         } else if (recommendedNewReview.review_title === "") {
             displayRecMessage("Title cannot be blank");
         } else if (recommendedNewReview.review_text === "") {
@@ -198,15 +180,10 @@ $(document).ready(function () {
             $.post("/api/reviews", recommendedNewReview)
                 .then(function () {
                     window.location.replace("review.html");
-                });
+            });
             $("#recommendedUserName").val("");
             $("#recommendedReviewTitle").val("");
             $("#recommendedReviewText").val("");
-
-            console.log(recommendedNewReview);
-            }
-    
+        }
     });
-
-
 });

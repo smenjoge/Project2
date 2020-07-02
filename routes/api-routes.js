@@ -51,14 +51,13 @@ module.exports = function(app) {
   });
 
   app.post("/api/reviews", async function(req, res) {
-    const {review_title, review_text, MovieImdbID} = req.body;
-    const results = await db.Review.create({review_title, review_text, MovieImdbID});    
+    const {review_title, review_name, review_text, MovieImdbID} = req.body;
+    const results = await db.Review.create({review_title, review_name, review_text, MovieImdbID});    
     res.end();
   });
 
   app.put("/api/reviews/:id", async function (req, res) {
     let result;
-    console.log(req.body);
     if (req.body.up) {
     result = await db.Review.increment("review_rating", {where : {id : req.params.id}});
     } else if (req.body.down) {
